@@ -82,8 +82,9 @@ public class CommBase {
 					// C'EST DANS CETTE BOUCLE QU'ON COMMUNIQUE AVEC LE SERVEUR
 					try{
 						writer.write("GET\n");
-						if (reader.readLine().startsWith("")){
-						System.out.println(reader.readLine());
+						test=reader.readLine();
+						if (test.charAt(0) != 'c'){
+						System.out.println(test);
 						}
 						writer.flush();
 					}catch(Exception e){
