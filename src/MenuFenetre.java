@@ -38,7 +38,10 @@ public class MenuFenetre extends JMenuBar{
 			MENU_DESSIN_DEMARRER = "app.frame.menus.draw.start",
 			MENU_DESSIN_ARRETER = "app.frame.menus.draw.stop",
 			MENU_AIDE_TITRE = "app.frame.menus.help.title",
-			MENU_AIDE_PROPOS = "app.frame.menus.help.about";
+			MENU_AIDE_PROPOS = "app.frame.menus.help.about",
+		    MENU_SERVEUR_TITRE = "app.frame.menus.server.title",
+			MENU_SERVEUR_CONNECTER = "app.frame.menus.server.connect";
+			
 	private static final String MESSAGE_DIALOGUE_A_PROPOS = "app.frame.dialog.about";  
 
 	private JMenuItem arreterMenuItem, demarrerMenuItem;
@@ -53,7 +56,19 @@ public class MenuFenetre extends JMenuBar{
 		this.comm = comm;
 		addMenuDessiner();
 		addMenuFichier();
+		addMenuServeur();
 		addMenuAide();
+	}
+
+	private void addMenuServeur() {
+		JMenu menu = creerMenu(MENU_SERVEUR_TITRE,new String[] { MENU_SERVEUR_CONNECTER});
+		demarrerMenuItem = menu.getItem(0);
+		demarrerMenuItem.addActionListener(new ActionListener(){
+		  public void actionPerformed(ActionEvent arg0) {
+			String s = (String)JOptionPane.showInputDialog(null,"Quel est le nom d'hôte et le port du serveur de formes?",JOptionPane.PLAIN_MESSAGE);
+		  }
+		});
+		add(menu);
 	}
 
 	/**
