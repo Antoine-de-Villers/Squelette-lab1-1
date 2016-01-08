@@ -5,8 +5,6 @@ Nom du fichier: CommBase.java
 Date créé: 2013-05-03
 *******************************************************
 Historique des modifications
-@student Antoine de Villers
-2016-08-01
 *******************************************************
 *@author Patrice Boucher
 2013-05-03 Version initiale
@@ -82,9 +80,7 @@ public class CommBase {
 					// C'EST DANS CETTE BOUCLE QU'ON COMMUNIQUE AVEC LE SERVEUR
 					try{
 						writer.write("GET\n");
-						if (reader.readLine().startsWith("")){
 						System.out.println(reader.readLine());
-						}
 						writer.flush();
 					}catch(Exception e){
 						writer.write("END\n");
