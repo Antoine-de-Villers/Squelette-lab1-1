@@ -31,7 +31,8 @@ public class CommBase {
 	private BufferedWriter writer;
 	private InputStream inS;
 	private OutputStream outS;
-	
+	private String hostname = null;
+	private int port = 0;
 	/**
 	 * Constructeur
 	 */
@@ -62,6 +63,11 @@ public class CommBase {
 		isActif = false;
 	}
 	
+	public void variablesSocket(int portNum, String host){
+		port = portNum;
+		hostname = host;
+	}
+	
 	/**
 	 * Créer le nécessaire pour la communication avec le serveur
 	 */
@@ -71,7 +77,7 @@ public class CommBase {
 			@Override
 			protected Object doInBackground() throws Exception {
 				String test = "allo";
-				socket = new Socket("localhost",10000);
+				socket = new Socket(hostname,port);
 				outS = socket.getOutputStream();
 				inS= socket.getInputStream();
 				reader = new BufferedReader(new InputStreamReader(inS));

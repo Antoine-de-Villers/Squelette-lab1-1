@@ -46,7 +46,10 @@ public class MenuFenetre extends JMenuBar{
 
 	private JMenuItem arreterMenuItem, demarrerMenuItem;
 	private static final int DELAI_QUITTER_MSEC = 200;
- 	   
+	private static String port = null;
+	private static String hostName = null;
+	private static int portNum;
+	
 	CommBase comm; // Pour activer/dÃ©sactiver la communication avec le serveur
 	
 	/**
@@ -66,11 +69,37 @@ public class MenuFenetre extends JMenuBar{
 		demarrerMenuItem.addActionListener(new ActionListener(){
 		  public void actionPerformed(ActionEvent arg0) {
 			String s = (String)JOptionPane.showInputDialog(null,"Quel est le nom d'hôte et le port du serveur de formes?",JOptionPane.PLAIN_MESSAGE);
-		  }
+			SeparerHostPortServeur(s);
+		  }		
 		});
 		add(menu);
 	}
-
+	
+	private void SeparerHostPortServeur(String s) {
+		 try {
+			String[] parts = s.split(":");
+		    hostName = parts[0]; 
+		    port = parts[1];
+				
+		 }catch(Exception e){
+			 JOptionPane.showMessageDialog(null,
+					    "Vous deevez séparer le hostname et le numero de port par :",
+					    "Error",
+					    JOptionPane.ERROR_MESSAGE);
+		 }
+		
+		try{
+		 portNum = Integer.parseInt(port);
+		}catch(NumberFormatException e){
+			JOptionPane.showMessageDialog(null,
+				    "Le port doit être un nombre",
+				    "Error",
+				    JOptionPane.ERROR_MESSAGE);
+		}	
+		
+		comm.variablesSocket(portNum, hostName);
+		comm.start();
+	}
 	/**
 	 *  CrÃ©er le menu "Draw". 
 	 */
