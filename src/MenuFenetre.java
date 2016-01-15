@@ -75,7 +75,10 @@ public class MenuFenetre extends JMenuBar{
 		});
 		add(menu);
 	}
-	
+	/**
+	 * Menu Serveur
+	 * @param s
+	 */
 	private void SeparerHostPortServeur(String s) {
 		 try {
 			parts = s.split(":");

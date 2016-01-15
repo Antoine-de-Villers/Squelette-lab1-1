@@ -34,7 +34,7 @@ public class CommBase {
 	private String info = null;
 	private String hostname = null;
 	private int port = 0;
-	private CreateurForme createur= new CreateurForme();
+	
 	/**
 	 * Constructeur
 	 */
@@ -78,7 +78,7 @@ public class CommBase {
 		threadComm = new SwingWorker(){
 			@Override
 			protected Object doInBackground() throws Exception {
-				socket = new Socket(hostname,port);
+				socket = new Socket("localhost",10000);
 				outS = socket.getOutputStream();
 				inS= socket.getInputStream();
 				reader = new BufferedReader(new InputStreamReader(inS));
@@ -90,18 +90,15 @@ public class CommBase {
 					try{
 						writer.write("GET\n");
 						info=reader.readLine();
-						if (info.charAt(0) != 'c'){
-						createur.splitInfo(info);
-						}
 						writer.flush();
 					}catch(Exception e){
 						writer.write("END\n");
 						writer.flush();
 					}
-					
- 					//La méthode suivante alerte l'observateur 
-					if(listener!=null)
-					   firePropertyChange("ENVOIE-TEST", null, (Object) ""); 
+
+					//La méthode suivante alerte l'observateur 
+					if(listener!=null && info.charAt(0) != 'c')
+						firePropertyChange("ENVOIE-TEST", null, (Object) info); 
 				}
 				//return null;
 			}
