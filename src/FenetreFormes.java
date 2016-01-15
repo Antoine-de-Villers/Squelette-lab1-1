@@ -26,6 +26,7 @@ public class FenetreFormes extends JComponent{
 	public static final int WIDTH = 500;
 	public static final int HEIGHT = 500;
 	public static final Dimension dimension = new Dimension(500,500);
+	public static final CreateurForme create= new CreateurForme();
 		
 	/**
 	 * Constructeur
@@ -39,10 +40,8 @@ public class FenetreFormes extends JComponent{
 	 */
 	@Override 
 	public void paintComponent(Graphics g){
-		
-		// Testing...
-		g.setColor(Color.cyan);
-		g.fillOval(45, 45, 355, 355);
+		//create();
+
 	}
 	
 	/*

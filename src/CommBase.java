@@ -31,8 +31,10 @@ public class CommBase {
 	private BufferedWriter writer;
 	private InputStream inS;
 	private OutputStream outS;
+	private String info = null;
 	private String hostname = null;
 	private int port = 0;
+	private CreateurForme createur= new CreateurForme();
 	/**
 	 * Constructeur
 	 */
@@ -76,7 +78,6 @@ public class CommBase {
 		threadComm = new SwingWorker(){
 			@Override
 			protected Object doInBackground() throws Exception {
-				String test = "allo";
 				socket = new Socket(hostname,port);
 				outS = socket.getOutputStream();
 				inS= socket.getInputStream();
@@ -88,9 +89,9 @@ public class CommBase {
 					// C'EST DANS CETTE BOUCLE QU'ON COMMUNIQUE AVEC LE SERVEUR
 					try{
 						writer.write("GET\n");
-						test=reader.readLine();
-						if (test.charAt(0) != 'c'){
-						System.out.println(test);
+						info=reader.readLine();
+						if (info.charAt(0) != 'c'){
+						createur.splitInfo(info);
 						}
 						writer.flush();
 					}catch(Exception e){

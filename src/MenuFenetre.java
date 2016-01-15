@@ -46,6 +46,7 @@ public class MenuFenetre extends JMenuBar{
 
 	private JMenuItem arreterMenuItem, demarrerMenuItem;
 	private static final int DELAI_QUITTER_MSEC = 200;
+	private static String[] parts;
 	private static String port = null;
 	private static String hostName = null;
 	private static int portNum;
@@ -77,7 +78,7 @@ public class MenuFenetre extends JMenuBar{
 	
 	private void SeparerHostPortServeur(String s) {
 		 try {
-			String[] parts = s.split(":");
+			parts = s.split(":");
 		    hostName = parts[0]; 
 		    port = parts[1];
 				
@@ -98,7 +99,6 @@ public class MenuFenetre extends JMenuBar{
 		}	
 		
 		comm.variablesSocket(portNum, hostName);
-		comm.start();
 	}
 	/**
 	 *  Créer le menu "Draw". 
