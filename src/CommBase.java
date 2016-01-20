@@ -15,6 +15,9 @@ Historique des modifications
 import java.beans.PropertyChangeListener;
 import java.io.*;
 import javax.swing.SwingWorker;
+
+import formes.CreateurForme;
+
 import java.net.Socket;
 
 /**
@@ -35,6 +38,7 @@ public class CommBase {
 	private String hostname = null;
 	private int port = 0;
 	private CreateurForme createur= new CreateurForme();
+	private FenetreFormes fenetreFormes = new FenetreFormes();
 	/**
 	 * Constructeur
 	 */
@@ -91,7 +95,7 @@ public class CommBase {
 						writer.write("GET\n");
 						info=reader.readLine();
 						if (info.charAt(0) != 'c'){
-						createur.splitInfo(info);
+					    fenetreFormes.creerFormes(info);
 						}
 						writer.flush();
 					}catch(Exception e){

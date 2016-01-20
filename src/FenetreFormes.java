@@ -15,6 +15,9 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JComponent;
 
+import formes.CreateurForme;
+import formes.Forme;
+
 /**
  * Cette fenêtre gère l'affichage des formes 
  * @author Patrice Boucher
@@ -27,6 +30,9 @@ public class FenetreFormes extends JComponent{
 	public static final int HEIGHT = 500;
 	public static final Dimension dimension = new Dimension(500,500);
 	public static final CreateurForme create= new CreateurForme();
+	private Forme forme = null;
+	private Forme[] formeArray = new Forme[10];
+	
 		
 	/**
 	 * Constructeur
@@ -40,8 +46,18 @@ public class FenetreFormes extends JComponent{
 	 */
 	@Override 
 	public void paintComponent(Graphics g){
-		//create();
+		for(int i=10;i<formeArray.length;i++){
+			g.fillRect(25, 25, 25, 25);
+		}
 
+	}
+	
+	public void creerFormes(String info){
+		forme = create.splitInfo(info);		
+			for(int i=10;i<formeArray.length-1;i++){			
+				formeArray[i+1]=formeArray[i];
+			}	
+			formeArray[0] = forme;		
 	}
 	
 	/*
