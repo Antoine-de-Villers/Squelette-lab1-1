@@ -15,9 +15,6 @@ Historique des modifications
 import java.beans.PropertyChangeListener;
 import java.io.*;
 import javax.swing.SwingWorker;
-
-import formes.CreateurForme;
-
 import java.net.Socket;
 
 /**
@@ -37,12 +34,7 @@ public class CommBase {
 	private String info = null;
 	private String hostname = null;
 	private int port = 0;
-<<<<<<< HEAD
 	
-=======
-	private CreateurForme createur= new CreateurForme();
-	private FenetreFormes fenetreFormes = new FenetreFormes();
->>>>>>> origin/master
 	/**
 	 * Constructeur
 	 */
@@ -81,12 +73,13 @@ public class CommBase {
 	/**
 	 * Créer le nécessaire pour la communication avec le serveur
 	 */
+	@SuppressWarnings("rawtypes")
 	protected void creerCommunication(){		
 		// Crée un fil d'exécusion parallèle au fil courant,
 		threadComm = new SwingWorker(){
 			@Override
 			protected Object doInBackground() throws Exception {
-				socket = new Socket("localhost",10000);
+				socket = new Socket(hostname,port);
 				outS = socket.getOutputStream();
 				inS= socket.getInputStream();
 				reader = new BufferedReader(new InputStreamReader(inS));
@@ -98,12 +91,6 @@ public class CommBase {
 					try{
 						writer.write("GET\n");
 						info=reader.readLine();
-<<<<<<< HEAD
-=======
-						if (info.charAt(0) != 'c'){
-					    fenetreFormes.creerFormes(info);
-						}
->>>>>>> origin/master
 						writer.flush();
 					}catch(Exception e){
 						writer.write("END\n");
