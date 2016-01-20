@@ -1,4 +1,8 @@
+<<<<<<< HEAD:src/CreateurForme.java
 import java.awt.Color;
+=======
+package formes;
+>>>>>>> origin/master:src/formes/CreateurForme.java
 import java.awt.Graphics;
 
 public class CreateurForme {
@@ -9,18 +13,32 @@ public class CreateurForme {
 	private int x2;
 	private int x3;
 	private int x4;
+	private Forme forme = null;
 	
 	/*
 	* Constructeur
 	*/
 	public CreateurForme (){
 	}
+<<<<<<< HEAD:src/CreateurForme.java
 
+=======
+	
+>>>>>>> origin/master:src/formes/CreateurForme.java
 	public Forme splitInfo(String info){
 		parts=info.split(" ");
 		for(int i=0;i<parts.length;i++){
 			System.out.println(parts[i]);
 		}
+<<<<<<< HEAD:src/CreateurForme.java
+=======
+		create();
+		createForme();
+		return forme;
+	}
+	
+	public void create(){
+>>>>>>> origin/master:src/formes/CreateurForme.java
 		nseq = Integer.parseInt(parts[0]);
 		name = parts[1];
 		x1= Integer.parseInt(parts[2]);
@@ -65,6 +83,7 @@ public class CreateurForme {
 		super(nseq,name,x1,x2,x3,x4);
 		color=new Color(12,24,32);
 	}
+<<<<<<< HEAD:src/CreateurForme.java
 
 	}
 	
@@ -96,4 +115,27 @@ public class CreateurForme {
 			color=new Color(9,234,33);
 		}
 		}
+=======
+	
+	public void createForme(){
+		switch (name){
+		case "CARRE":
+			forme = new Rectangle(nseq,name,x1,x2,x3,x4);
+			break;
+		case "RECTANGLE":
+			forme = new Rectangle(nseq,name,x1,x2,x3,x4);
+			break;
+		case "LIGNE":
+			forme = new Ligne(nseq,name,x1,x2,x3,x4);
+			break;
+		case "OVALE":
+			forme = new Ovale(nseq,name,x1,x2,x3,x4);
+			break;
+		case "Cercle":
+			forme = new Cercle(nseq,name,x1,x2,x3);
+			break;
+		}
+		
+	}
+>>>>>>> origin/master:src/formes/CreateurForme.java
 }

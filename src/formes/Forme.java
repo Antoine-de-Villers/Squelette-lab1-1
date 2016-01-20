@@ -1,7 +1,8 @@
+package formes;
 import java.awt.Color;
 
 public abstract class Forme{
-    protected static Color color;
+    protected Color color;
 	protected int nseq;
 	protected String name;
 	protected int x1;
@@ -10,12 +11,6 @@ public abstract class Forme{
 	protected int x4;
 	
 	
-	
-	/**
-	 * Constructeur default
-	 */
-	public Forme() {	
-	}
 	/**
 	 * Constructeur formes sauf cercle
 	 */
@@ -36,6 +31,7 @@ public abstract class Forme{
 		this.x1=x1;
 		this.x2=x2;
 		this.x3=x3;
+<<<<<<< HEAD:src/Forme.java
 	}
 	public String getName(){
 		return this.name;
@@ -55,4 +51,14 @@ public abstract class Forme{
 	public int getX4(){
 		return this.x4;
 	}
+=======
+	}	
+>>>>>>> origin/master:src/formes/Forme.java
 }
+
+	
+	
+	
+
+	
+	
