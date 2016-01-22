@@ -1,16 +1,16 @@
 import java.awt.Color;
 
 public abstract class Forme{
-    protected  Color color;
+	protected  Color color;
 	protected int nseq;
 	protected String name;
 	protected int x1;
 	protected int x2;
 	protected int x3;
 	protected int x4;
-	
-	
-	
+
+
+
 	/**
 	 * Constructeur default
 	 */
@@ -36,6 +36,9 @@ public abstract class Forme{
 		this.x1=x1;
 		this.x2=x2;
 		this.x3=x3;
+	}
+	public int getID(){
+		return this.nseq;
 	}
 	public String getName(){
 		return this.name;

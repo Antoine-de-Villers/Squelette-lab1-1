@@ -3,14 +3,14 @@ Cours:  LOG121
 Projet: Squelette du laboratoire #1
 Nom du fichier: CommBase.java
 Date créé: 2013-05-03
-*******************************************************
+ *******************************************************
 Historique des modifications
 @student Antoine de Villers
 2016-08-01
-*******************************************************
-*@author Patrice Boucher
+ *******************************************************
+ *@author Patrice Boucher
 2013-05-03 Version initiale
-*******************************************************/  
+ *******************************************************/  
 
 import java.beans.PropertyChangeListener;
 import java.io.*;
@@ -21,26 +21,27 @@ import java.net.Socket;
  * Base d'une communication via un fil d'exécution parallèle.
  */
 public class CommBase {
-	
+
 	private final int DELAI = 1000;
 	private SwingWorker threadComm =null;
 	private PropertyChangeListener listener = null;
 	private boolean isActif = false;
+	private boolean isReady = false;
 	private Socket socket;
 	private BufferedReader reader;
 	private BufferedWriter writer;
 	private InputStream inS;
 	private OutputStream outS;
 	private String info = null;
-	private String hostname = "localhost";
-	private int port = 10000;
-	
+	private String hostname=null;
+	private int port=0;
+
 	/**
 	 * Constructeur
 	 */
 	public CommBase(){
 	}
-	
+
 	/**
 	 * D�finir le r�cepteur de l'information re�ue dans la communication avec le serveur
 	 * @param listener sera alerté lors de l'appel de "firePropertyChanger" par le SwingWorker
@@ -48,7 +49,7 @@ public class CommBase {
 	public void setPropertyChangeListener(PropertyChangeListener listener){
 		this.listener = listener;
 	}
-	
+
 	/**
 	 * Démarre la communication
 	 */
@@ -56,6 +57,10 @@ public class CommBase {
 		creerCommunication();
 	}
 	
+	public void readyComm(){
+		isReady=true;
+	}
+
 	/**
 	 * Arrête la communication
 	 */
@@ -65,11 +70,21 @@ public class CommBase {
 		isActif = false;
 	}
 	
+	public void stopComm(){
+		stop();
+		try {
+			writer.write("END\n");
+			writer.flush();
+		} catch (Exception e) {
+		}
+		isReady= false;
+	}
+
 	public void variablesSocket(int portNum, String host){
 		port = portNum;
 		hostname = host;
 	}
-	
+
 	/**
 	 * Créer le nécessaire pour la communication avec le serveur
 	 */
@@ -93,8 +108,7 @@ public class CommBase {
 						info=reader.readLine();
 						writer.flush();
 					}catch(Exception e){
-						writer.write("END\n");
-						writer.flush();
+						e.printStackTrace();
 					}
 
 					//La méthode suivante alerte l'observateur 
@@ -105,15 +119,18 @@ public class CommBase {
 			}
 		};
 		if(listener!=null)
-		   threadComm.addPropertyChangeListener(listener); // La méthode "propertyChange" de ApplicationFormes sera donc appelée lorsque le SwinkWorker invoquera la méthode "firePropertyChanger" 		
+			threadComm.addPropertyChangeListener(listener); // La méthode "propertyChange" de ApplicationFormes sera donc appelée lorsque le SwinkWorker invoquera la méthode "firePropertyChanger" 		
 		threadComm.execute(); // Lance le fil d'exécution parallèle.
 		isActif = true;
 	}
-	
+
 	/**
 	 * @return si le fil d'exécution parallèle est actif
 	 */
 	public boolean isActif(){
 		return isActif;
+	}
+	public boolean isReady(){
+		return isReady;
 	}
 }

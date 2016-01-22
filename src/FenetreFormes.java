@@ -3,12 +3,12 @@ Cours:  LOG121
 Projet: Squelette du laboratoire #1
 Nom du fichier: FenetreFormes.java
 Date créé: 2013-05-03
-*******************************************************
+ *******************************************************
 Historique des modifications
-*******************************************************
-*@author Patrice Boucher
+ *******************************************************
+ *@author Patrice Boucher
 2013-05-03 Version initiale
-*******************************************************/  
+ *******************************************************/  
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -29,7 +29,7 @@ public class FenetreFormes extends JComponent{
 	private Forme forme = null;
 	private Forme[] formeArray = new Forme[10];
 
-	
+
 	/**
 	 * Constructeur
 	 */
@@ -44,27 +44,26 @@ public class FenetreFormes extends JComponent{
 	 */
 	@Override 
 	public void paintComponent(Graphics g){
-		System.out.println("HERE");
 		for(int i=formeArray.length-1;i>=0;i--){
-		if(formeArray[i] instanceof Forme && formeArray[i] != null){
-			switch(formeArray[i].getName()){
-			case "<RECTANGLE>" :
-				paintRectangle(g,i);
-				break;
-			case "<OVALE>" :
-				paintOvale(g,i);
-				break;
-			case "<CARRE>" :
-				paintCarre(g,i);
-				break;
-			case "<CERCLE>" :
-				paintCercle(g,i);
-				break;
-			case "<LIGNE>" :
-				paintLigne(g,i);
-				break;
+			if(formeArray[i] instanceof Forme && formeArray[i] != null){
+				switch(formeArray[i].getName()){
+				case "<RECTANGLE>" :
+					paintRectangle(g,i);
+					break;
+				case "<OVALE>" :
+					paintOvale(g,i);
+					break;
+				case "<CARRE>" :
+					paintCarre(g,i);
+					break;
+				case "<CERCLE>" :
+					paintCercle(g,i);
+					break;
+				case "<LIGNE>" :
+					paintLigne(g,i);
+					break;
+				}
 			}
-		}
 		}
 	}
 
@@ -74,40 +73,40 @@ public class FenetreFormes extends JComponent{
 		g.setColor(formeArray[i].getColor());
 		g.fillRect(formeArray[i].getX1(),formeArray[i].getX2(),width,height);
 	}
-	
+
 	public void paintOvale(Graphics g, int i){
-		int width = formeArray[i].getX1()-formeArray[i].getX3();
-		int height = formeArray[i].getX2()-formeArray[i].getX4();
+		int width = formeArray[i].getX3()*2;
+		int height = formeArray[i].getX4()*2;
 		g.setColor(formeArray[i].getColor());
 		g.fillOval(formeArray[i].getX1(),formeArray[i].getX2(),width,height);
 	}
-	
+
 	public void paintCarre(Graphics g, int i){
 		int width = formeArray[i].getX1()-formeArray[i].getX3();
 		int height = formeArray[i].getX2()-formeArray[i].getX4();
 		g.setColor(formeArray[i].getColor());
 		g.fillRect(formeArray[i].getX1(),formeArray[i].getX2(),width,height);
 	}
-	
-  public void paintCercle(Graphics g, int i){
-	g.setColor(formeArray[i].getColor());
-	g.fillOval(formeArray[i].getX1(),formeArray[i].getX2(),formeArray[i].getX3(),formeArray[i].getX3());
-}
 
-  public void paintLigne(Graphics g, int i){
-	g.setColor(formeArray[i].getColor());
-	g.drawLine(formeArray[i].getX1(), formeArray[i].getX2(), formeArray[i].getX3(), formeArray[i].getX4());
-}
-	
+	public void paintCercle(Graphics g, int i){
+		g.setColor(formeArray[i].getColor());
+		g.fillOval(formeArray[i].getX1(),formeArray[i].getX2(),formeArray[i].getX3(),formeArray[i].getX3());
+	}
+
+	public void paintLigne(Graphics g, int i){
+		g.setColor(formeArray[i].getColor());
+		g.drawLine(formeArray[i].getX1(), formeArray[i].getX2(), formeArray[i].getX3(), formeArray[i].getX4());
+	}
+
 	public void creerFormes(String info){
 		forme = createur.splitInfo(info);		
-			for(int i=formeArray.length-1;i>0;i--){			
-				formeArray[i]=formeArray[i-1];
-			}	
-			formeArray[0] = forme;	
-			repaint();
+		for(int i=formeArray.length-1;i>0;i--){			
+			formeArray[i]=formeArray[i-1];
+		}	
+		formeArray[0] = forme;	
+		repaint();
 	}
-	
+
 	/*
 	 * Le Layout qui utilise (contient) FenetreFormes doit réserver 
 	 * l'espace nécessaire à son affichage
