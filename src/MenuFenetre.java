@@ -1,4 +1,3 @@
-
 /******************************************************
 Cours:  LOG121
 Projet: Squelette du laboratoire #1
@@ -9,11 +8,16 @@ Historique des modifications
  *******************************************************
  *@author Patrice Boucher
 2013-05-03 Version initiale
+ *@author Antoine de Villers
+ *@author Étienne Rousseau
+2016-01-22 Version finale
  *******************************************************/
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.net.UnknownHostException;
+
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -109,10 +113,9 @@ public class MenuFenetre extends JMenuBar {
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, "Le port doit être un nombre", "Error", JOptionPane.ERROR_MESSAGE);
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Vous deevez séparer le hostname et le numero de port par :", "Error",
+			JOptionPane.showMessageDialog(null, "Vous devez séparer le hostname et le numero de port par :", "Error",
 					JOptionPane.ERROR_MESSAGE);
 		}
-
 		comm.variablesSocket(portNum, hostName);
 	}
 

@@ -1,3 +1,15 @@
+/******************************************************
+Cours:  LOG121
+Projet: Laboratoire #1
+Nom du fichier: CreateurForme.java
+Date créé: 2016-01-15
+ *******************************************************
+Historique des modifications
+ *******************************************************
+ *@author Antoine de Villers
+ *@author �tienne Rousseau
+2016-01-15 Version initiale
+ *******************************************************/  
 import java.awt.Color;
 import ca.etsmtl.log.util.IDLogger;
 

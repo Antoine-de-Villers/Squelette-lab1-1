@@ -1,6 +1,6 @@
 /******************************************************
 Cours:  LOG121
-Projet: Squelette du laboratoire #1
+Projet: Laboratoire #1
 Nom du fichier: FenetreFormes.java
 Date créé: 2013-05-03
  *******************************************************
@@ -8,6 +8,9 @@ Historique des modifications
  *******************************************************
  *@author Patrice Boucher
 2013-05-03 Version initiale
+ *@author Antoine de Villers
+ *@author �tienne Rousseau
+2016-01-22 Version finale
  *******************************************************/  
 
 import java.awt.Dimension;
@@ -18,6 +21,8 @@ import javax.swing.JComponent;
  * Cette fenêtre gère l'affichage des formes 
  * @author Patrice Boucher
  * @date 2013/05/04
+ * @author AM30890
+ *
  */
 public class FenetreFormes extends JComponent{
 
@@ -67,13 +72,23 @@ public class FenetreFormes extends JComponent{
 		}
 	}
 
+	/**
+	 * Paint un rectangle
+	 * @param g = Graphics
+	 * @param i = l'index du tableau
+	 */
 	public void paintRectangle(Graphics g,int i){
 		int width = formeArray[i].getX1()-formeArray[i].getX3();
 		int height = formeArray[i].getX2()-formeArray[i].getX4();
 		g.setColor(formeArray[i].getColor());
 		g.fillRect(formeArray[i].getX1(),formeArray[i].getX2(),width,height);
 	}
-
+	
+	/**
+	 * Paint un ovale
+	 * @param g = Graphics
+	 * @param i = l'index du tableau
+	 */
 	public void paintOvale(Graphics g, int i){
 		int width = formeArray[i].getX3()*2;
 		int height = formeArray[i].getX4()*2;
@@ -81,6 +96,11 @@ public class FenetreFormes extends JComponent{
 		g.fillOval(formeArray[i].getX1(),formeArray[i].getX2(),width,height);
 	}
 
+	/**
+	 * Paint un carr�
+	 * @param g = Graphics
+	 * @param i = l'index du tableau
+	 */
 	public void paintCarre(Graphics g, int i){
 		int width = formeArray[i].getX1()-formeArray[i].getX3();
 		int height = formeArray[i].getX2()-formeArray[i].getX4();
@@ -88,16 +108,27 @@ public class FenetreFormes extends JComponent{
 		g.fillRect(formeArray[i].getX1(),formeArray[i].getX2(),width,height);
 	}
 
+	/**
+	 * Paint un cercle
+	 * @param g = Graphics
+	 * @param i = l'index du tableau
+	 */
 	public void paintCercle(Graphics g, int i){
 		g.setColor(formeArray[i].getColor());
 		g.fillOval(formeArray[i].getX1(),formeArray[i].getX2(),formeArray[i].getX3(),formeArray[i].getX3());
 	}
 
+	/**
+	 * Paint une ligne
+	 * @param g = Graphics
+	 * @param i = l'index du tableau
+	 */
 	public void paintLigne(Graphics g, int i){
 		g.setColor(formeArray[i].getColor());
 		g.drawLine(formeArray[i].getX1(), formeArray[i].getX2(), formeArray[i].getX3(), formeArray[i].getX4());
 	}
 
+	
 	public void creerFormes(String info){
 		forme = createur.splitInfo(info);		
 		for(int i=formeArray.length-1;i>0;i--){			

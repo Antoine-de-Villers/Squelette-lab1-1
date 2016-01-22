@@ -1,21 +1,28 @@
 /******************************************************
 Cours:  LOG121
-Projet: Squelette du laboratoire #1
+Projet: Laboratoire #1
 Nom du fichier: CommBase.java
 Date créé: 2013-05-03
  *******************************************************
 Historique des modifications
-@student Antoine de Villers
-2016-08-01
  *******************************************************
  *@author Patrice Boucher
 2013-05-03 Version initiale
+ *@author Antoine de Villers
+ *@author �tienne Rousseau
+2016-01-22 Version finale
  *******************************************************/  
 
 import java.beans.PropertyChangeListener;
 import java.io.*;
+
+import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
+
+import java.net.ConnectException;
 import java.net.Socket;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 
 /**
  * Base d'une communication via un fil d'exécution parallèle.
@@ -60,7 +67,19 @@ public class CommBase {
 	}
 	
 	public void readyComm(){
+		try{
+		socket = new Socket(hostname,port);
+		outS = socket.getOutputStream();
+		inS= socket.getInputStream();
+		reader = new BufferedReader(new InputStreamReader(inS));
+		writer = new BufferedWriter(new OutputStreamWriter(outS));
 		isReady=true;
+		}catch(ConnectException e){
+			JOptionPane.showMessageDialog(null, "Votre hostname est invalide", "Error",
+					JOptionPane.ERROR_MESSAGE);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -69,17 +88,18 @@ public class CommBase {
 	public void stop(){
 		if(threadComm!=null)
 			threadComm.cancel(true); 
-		try {
-			writer.write("END\n");
-			writer.flush();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		isActif = false;
 	}
 	
 	public void stopComm(){
 		stop();
+			try {
+				writer.write("END\n");
+				writer.flush();
+				socket.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		port=0;
 		hostname=null;
 		isReady= false;
@@ -93,17 +113,11 @@ public class CommBase {
 	/**
 	 * Créer le nécessaire pour la communication avec le serveur
 	 */
-	@SuppressWarnings("rawtypes")
-	protected void creerCommunication(){		
+	protected void creerCommunication(){
 		// Crée un fil d'exécusion parallèle au fil courant,
 		threadComm = new SwingWorker(){
 			@Override
 			protected Object doInBackground() throws Exception {
-				socket = new Socket(hostname,port);
-				outS = socket.getOutputStream();
-				inS= socket.getInputStream();
-				reader = new BufferedReader(new InputStreamReader(inS));
-				writer = new BufferedWriter(new OutputStreamWriter(outS));
 				System.out.println("Le fils d'execution parallele est lance");
 				while(true){
 					Thread.sleep(DELAI);
@@ -115,7 +129,6 @@ public class CommBase {
 					}catch(Exception e){
 						e.printStackTrace();
 					}
-
 					//La méthode suivante alerte l'observateur 
 					if(listener!=null && info.charAt(0) != 'c')
 						firePropertyChange("ENVOIE-TEST", null, (Object) info); 
@@ -127,7 +140,7 @@ public class CommBase {
 			threadComm.addPropertyChangeListener(listener); // La méthode "propertyChange" de ApplicationFormes sera donc appelée lorsque le SwinkWorker invoquera la méthode "firePropertyChanger" 		
 		threadComm.execute(); // Lance le fil d'exécution parallèle.
 		isActif = true;
-	}
+		}
 
 	/**
 	 * @return si le fil d'exécution parallèle est actif
