@@ -64,7 +64,7 @@ public class CreateurForme {
 	public class Rectangle extends Forme{
 	public Rectangle(int nseq,String name, int x1, int x2, int x3, int x4){
 		super(nseq,name,x1,x2,x3,x4);
-		color=new Color(12,24,32);
+		color=new Color(112,222,232);
 	}
 
 	}
@@ -73,7 +73,7 @@ public class CreateurForme {
 		
 	public Ovale(int nseq,String name, int x1, int x2, int x3, int x4){
 		super(nseq,name,x1,x2,x3,x4);
-		color=new Color(34,34,32);
+		color=new Color(222,34,32);
 	}
 	}
 	public class Carre extends Forme{
@@ -87,7 +87,7 @@ public class CreateurForme {
 		
 		public Cercle(int nseq,String name, int x1, int x2, int x3){
 			super(nseq,name,x1,x2,x3);
-			color=new Color(12,7,2);
+			color=new Color(12,7,255);
 		}
 		}
 	public class Ligne extends Forme{

@@ -1,7 +1,7 @@
 import java.awt.Color;
 
 public abstract class Forme{
-    protected static Color color;
+    protected  Color color;
 	protected int nseq;
 	protected String name;
 	protected int x1;
