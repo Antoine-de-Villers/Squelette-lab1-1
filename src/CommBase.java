@@ -33,8 +33,9 @@ public class CommBase {
 	private InputStream inS;
 	private OutputStream outS;
 	private String info = null;
-	private String hostname=null;
 	private int port=0;
+	private String hostname=null;
+
 
 	/**
 	 * Constructeur
@@ -67,16 +68,18 @@ public class CommBase {
 	public void stop(){
 		if(threadComm!=null)
 			threadComm.cancel(true); 
-		isActif = false;
-	}
-	
-	public void stopComm(){
-		stop();
 		try {
 			writer.write("END\n");
 			writer.flush();
 		} catch (Exception e) {
 		}
+		isActif = false;
+	}
+	
+	public void stopComm(){
+		stop();
+		port=0;
+		hostname=null;
 		isReady= false;
 	}
 

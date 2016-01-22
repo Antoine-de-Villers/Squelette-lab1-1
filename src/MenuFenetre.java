@@ -46,7 +46,7 @@ public class MenuFenetre extends JMenuBar {
 
 	private static final String MESSAGE_DIALOGUE_A_PROPOS = "app.frame.dialog.about";
 
-	private JMenuItem arreterMenuItem, demarrerMenuItem;
+	private JMenuItem arreterMenuItem, demarrerMenuItem, arreterCommMenuItem, demarrerCommMenuItem;
 	private static final int DELAI_QUITTER_MSEC = 200;
 	private static String[] parts;
 	private static String port = null;
@@ -64,29 +64,32 @@ public class MenuFenetre extends JMenuBar {
 		addMenuFichier();
 		addMenuServeur();
 		addMenuAide();
+		rafraichirMenus();
 	}
-
+    /**
+     * Cr�e le menu Serveur
+     */
 	private void addMenuServeur() {
 		JMenu menu = creerMenu(MENU_SERVEUR_TITRE, new String[] { MENU_SERVEUR_CONNECTER, MENU_SERVEUR_DECONNECTER });
-		demarrerMenuItem = menu.getItem(0);
-		demarrerMenuItem.addActionListener(new ActionListener() {
+		demarrerCommMenuItem = menu.getItem(0);
+		demarrerCommMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String s = (String) JOptionPane.showInputDialog(null,
 						"Quel est le nom d'h�te et le port du serveur de formes?", "localhost:10000");
 				SeparerHostPortServeur(s);
-				rafraichirCommMenus();
+				rafraichirMenus();
 			}
 		});
-		demarrerMenuItem.setAccelerator(
+		demarrerCommMenuItem.setAccelerator(
 				KeyStroke.getKeyStroke(MENU_SERVEUR_CONNECTER_TOUCHE_RACC, MENU_SERVEUR_CONNECTER_TOUCHE_MASK));
-		arreterMenuItem = menu.getItem(1);
-		arreterMenuItem.addActionListener(new ActionListener() {
+		arreterCommMenuItem = menu.getItem(1);
+		arreterCommMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				comm.stopComm();
-				rafraichirCommMenus();
+				rafraichirMenus();
 			}
 		});
-		arreterMenuItem.setAccelerator(
+		arreterCommMenuItem.setAccelerator(
 				KeyStroke.getKeyStroke(MENU_SERVEUR_DECONNECTER_TOUCHE_RACC, MENU_SERVEUR_DECONNECTER_TOUCHE_MASK));
 		add(menu);
 	}
@@ -94,7 +97,7 @@ public class MenuFenetre extends JMenuBar {
 	/**
 	 * Menu Serveur
 	 * 
-	 * @param s
+	 * @param s = Le nom d'h�te et le port du serveur de formes
 	 */
 	private void SeparerHostPortServeur(String s) {
 		try {
@@ -177,18 +180,17 @@ public class MenuFenetre extends JMenuBar {
 		add(menu);
 	}
 
+	
 	/**
 	 * Activer ou désactiver les items du menu selon la sélection.
 	 */
 	private void rafraichirMenus() {
 		demarrerMenuItem.setEnabled(!comm.isActif()&&comm.isReady());
-		arreterMenuItem.setEnabled(comm.isActif());
+		arreterMenuItem.setEnabled(comm.isActif()&&comm.isReady());
+		demarrerCommMenuItem.setEnabled(!comm.isReady());
+		arreterCommMenuItem.setEnabled(comm.isReady());
 	}
 	
-	private void rafraichirCommMenus() {
-		demarrerMenuItem.setEnabled(!comm.isReady());
-		arreterMenuItem.setEnabled(comm.isReady());
-	}
 
 	/**
 	 * Créer un élément de menu à partir d'un champs principal et ses
