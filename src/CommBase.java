@@ -73,6 +73,7 @@ public class CommBase {
 			writer.write("END\n");
 			writer.flush();
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		isActif = false;
 	}

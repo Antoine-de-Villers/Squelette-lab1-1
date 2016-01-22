@@ -33,9 +33,6 @@ public class CreateurForme {
 	 */
 	public Forme splitInfo(String info){
 		parts=info.split(" ");
-		for(int i=0;i<parts.length;i++){
-			System.out.println(parts[i]);
-		}
 		nseq = Integer.parseInt(parts[0]);
 		name = parts[1];
 		x1= Integer.parseInt(parts[2]);
