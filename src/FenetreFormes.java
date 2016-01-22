@@ -25,7 +25,6 @@ public class FenetreFormes extends JComponent{
 	public static final int WIDTH = 500;
 	public static final int HEIGHT = 500;
 	public static final Dimension dimension = new Dimension(500,500);
-	public int i=0;
 	public CreateurForme createur;
 	private Forme forme = null;
 	private Forme[] formeArray = new Forme[10];
@@ -46,64 +45,64 @@ public class FenetreFormes extends JComponent{
 	@Override 
 	public void paintComponent(Graphics g){
 		System.out.println("HERE");
-		for(i=0;i<formeArray.length;i++){
+		for(int i=formeArray.length-1;i>=0;i--){
 		if(formeArray[i] instanceof Forme && formeArray[i] != null){
 			switch(formeArray[i].getName()){
 			case "<RECTANGLE>" :
-				paintRectangle(g);
+				paintRectangle(g,i);
 				break;
 			case "<OVALE>" :
-				paintOvale(g);
+				paintOvale(g,i);
 				break;
 			case "<CARRE>" :
-				paintCarre(g);
+				paintCarre(g,i);
 				break;
 			case "<CERCLE>" :
-				paintCercle(g);
+				paintCercle(g,i);
 				break;
 			case "<LIGNE>" :
-				paintLigne(g);
+				paintLigne(g,i);
 				break;
 			}
 		}
 		}
 	}
 
-	public void paintRectangle(Graphics g){
+	public void paintRectangle(Graphics g,int i){
 		int width = formeArray[i].getX1()-formeArray[i].getX3();
 		int height = formeArray[i].getX2()-formeArray[i].getX4();
 		g.setColor(formeArray[i].getColor());
 		g.fillRect(formeArray[i].getX1(),formeArray[i].getX2(),width,height);
 	}
 	
-	public void paintOvale(Graphics g){
+	public void paintOvale(Graphics g, int i){
 		int width = formeArray[i].getX1()-formeArray[i].getX3();
 		int height = formeArray[i].getX2()-formeArray[i].getX4();
 		g.setColor(formeArray[i].getColor());
 		g.fillOval(formeArray[i].getX1(),formeArray[i].getX2(),width,height);
 	}
 	
-	public void paintCarre(Graphics g){
+	public void paintCarre(Graphics g, int i){
 		int width = formeArray[i].getX1()-formeArray[i].getX3();
 		int height = formeArray[i].getX2()-formeArray[i].getX4();
 		g.setColor(formeArray[i].getColor());
 		g.fillRect(formeArray[i].getX1(),formeArray[i].getX2(),width,height);
 	}
 	
-  public void paintCercle(Graphics g){
+  public void paintCercle(Graphics g, int i){
 	g.setColor(formeArray[i].getColor());
 	g.fillOval(formeArray[i].getX1(),formeArray[i].getX2(),formeArray[i].getX3(),formeArray[i].getX3());
 }
 
-  public void paintLigne(Graphics g){
+  public void paintLigne(Graphics g, int i){
 	g.setColor(formeArray[i].getColor());
 	g.drawLine(formeArray[i].getX1(), formeArray[i].getX2(), formeArray[i].getX3(), formeArray[i].getX4());
 }
 	
 	public void creerFormes(String info){
 		forme = createur.splitInfo(info);		
-			for(int i=10;i<formeArray.length-1;i++){			
-				formeArray[i+1]=formeArray[i];
+			for(int i=formeArray.length-1;i>0;i--){			
+				formeArray[i]=formeArray[i-1];
 			}	
 			formeArray[0] = forme;	
 			repaint();

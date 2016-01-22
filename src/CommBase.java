@@ -32,8 +32,8 @@ public class CommBase {
 	private InputStream inS;
 	private OutputStream outS;
 	private String info = null;
-	private String hostname = null;
-	private int port = 0;
+	private String hostname = "localhost";
+	private int port = 10000;
 	
 	/**
 	 * Constructeur
