@@ -23,6 +23,7 @@ import java.net.Socket;
 public class CommBase {
 
 	private final int DELAI = 1000;
+	@SuppressWarnings("rawtypes")
 	private SwingWorker threadComm =null;
 	private PropertyChangeListener listener = null;
 	private boolean isActif = false;
