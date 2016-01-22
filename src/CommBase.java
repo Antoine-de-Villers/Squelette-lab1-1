@@ -75,7 +75,7 @@ public class CommBase {
 		writer = new BufferedWriter(new OutputStreamWriter(outS));
 		isReady=true;
 		}catch(ConnectException e){
-			JOptionPane.showMessageDialog(null, "Votre hostname est invalide", "Error",
+			JOptionPane.showMessageDialog(null, "La connection n'a pas pu Ítre Ètablie", "Error",
 					JOptionPane.ERROR_MESSAGE);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -124,14 +124,29 @@ public class CommBase {
 					// C'EST DANS CETTE BOUCLE QU'ON COMMUNIQUE AVEC LE SERVEUR
 					try{
 						writer.write("GET\n");
-						info=reader.readLine();
 						writer.flush();
-					}catch(Exception e){
+						reader.readLine(); //skip la ligne command>
+						info=reader.readLine();
+					}catch(SocketException e){
+						isReady=false;
+						firePropertyChange("CONNECTION INTERROMPUE",null,null);
+						JOptionPane.showMessageDialog(null, "La connection a ÈtÈ perdue", "Error",
+								JOptionPane.ERROR_MESSAGE);
+						writer.write("END\n");
+						writer.flush();
+						socket.close();	
+					}
+					catch(Exception e){
 						e.printStackTrace();
+						writer.write("END\n");
+						writer.flush();
+						socket.close();
+						isReady=false;
 					}
 					//La m√©thode suivante alerte l'observateur 
-					if(listener!=null && info.charAt(0) != 'c')
-						firePropertyChange("ENVOIE-TEST", null, (Object) info); 
+					System.out.println(info);
+					if(listener!=null)
+						firePropertyChange("ENVOIE", null, (Object) info); 
 				}
 				//return null;
 			}
@@ -146,6 +161,9 @@ public class CommBase {
 	 * @return si le fil d'ex√©cution parall√®le est actif
 	 */
 	public boolean isActif(){
+		if (isReady==false){
+			isActif=false;
+		}
 		return isActif;
 	}
 	public boolean isReady(){

@@ -28,13 +28,14 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener{
 
 	private static final long serialVersionUID = -1210804336046370508L;
 	FenetreFormes fenetreFormes;
+	MenuFenetre menu;
 
 	/**
 	 * Constructeur
 	 */
 	public FenetrePrincipale(CommBase comm){
 
-		MenuFenetre menu = new MenuFenetre(comm);
+		menu = new MenuFenetre(comm);
 		this.setLayout(new BorderLayout());
 		this.add(menu, BorderLayout.NORTH); 
 		this.fenetreFormes = new FenetreFormes();
@@ -48,8 +49,11 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener{
 	@Override
 	public void propertyChange(PropertyChangeEvent arg0) {
 
-		if(arg0.getPropertyName().equals("ENVOIE-TEST")){
+		if(arg0.getPropertyName().equals("ENVOIE")){
 			fenetreFormes.creerFormes((String) arg0.getNewValue());
+		}
+		if(arg0.getPropertyName().equals("CONNECTION INTERROMPUE")){
+			menu.rafraichirMenus();
 		}
 	}
 }
