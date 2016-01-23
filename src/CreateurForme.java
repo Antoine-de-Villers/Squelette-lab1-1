@@ -14,7 +14,6 @@ import java.awt.Color;
 import ca.etsmtl.log.util.IDLogger;
 
 public class CreateurForme {
-	private String[] parts;
 	private int nseq;
 	private String name;
 	private int x1;
@@ -22,6 +21,7 @@ public class CreateurForme {
 	private int x3;
 	private int x4;
     private IDLogger logger = IDLogger.getInstance(); //Méthode statique
+    private DecomposerChaine chaine = new DecomposerChaine();
     
 	/*
 	 * Constructeur
@@ -44,17 +44,14 @@ public class CreateurForme {
 	 *         Forme avec les paramètres passés par la chaîne d'entrée.
 	 */
 	public Forme splitInfo(String info){
-		parts=info.split(" ");
-		nseq = Integer.parseInt(parts[0]);
-		name = parts[1];
-		x1= Integer.parseInt(parts[2]);
-		x2= Integer.parseInt(parts[3]);
-		x3= Integer.parseInt(parts[4]);
-		try{
-			x4= Integer.parseInt(parts[5]);
-		}catch(Exception e){
-			//C'est un cercle
-		}
+		chaine.Split(info);
+		name = chaine.getName();
+		nseq = chaine.getNSEQ();
+		x1 = chaine.getX1();
+		x2 = chaine.getX2();
+		x3 = chaine.getX3();
+		x4 = chaine.getX4();
+				
 		Forme forme = create();
 		logger.logID(forme.getID());
 		return forme;
@@ -62,20 +59,21 @@ public class CreateurForme {
 
 	public Forme create(){
 		Forme forme=null;
+		
 		switch(name){
-		case "<RECTANGLE>" :
+		case "RECTANGLE" :
 			forme = new Rectangle(nseq,name,x1,x2,x3,x4);
 			break;
-		case "<OVALE>" :
+		case "OVALE" :
 			forme = new Ovale(nseq,name,x1,x2,x3,x4);
 			break;
-		case "<CARRE>" :
+		case "CARRE" :
 			forme = new Carre(nseq,name,x1,x2,x3,x4);
 			break;
-		case "<CERCLE>" :
+		case "CERCLE" :
 			forme = new Cercle(nseq,name,x1,x2,x3);
 			break;
-		case "<LIGNE>" :
+		case "LIGNE" :
 			forme = new Ligne(nseq,name,x1,x2,x3,x4);
 			break;
 		}
