@@ -74,6 +74,7 @@ public class CreateurForme {
 		
 		if(name.equals("RECTANGLE")){
 			forme = new Rectangle(nseq,name,x1,x2,x3,x4);
+			
 		}
 		
 		if(name.equals("OVALE")){
