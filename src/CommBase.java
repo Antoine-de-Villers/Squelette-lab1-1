@@ -144,7 +144,7 @@ public class CommBase {
 						isReady=false;
 					}
 					//La méthode suivante alerte l'observateur 
-					System.out.println(info);
+					//System.out.println(info);
 					if(listener!=null)
 						firePropertyChange("ENVOIE", null, (Object) info); 
 				}

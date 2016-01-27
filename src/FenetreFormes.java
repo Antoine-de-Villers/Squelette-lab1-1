@@ -52,19 +52,19 @@ public class FenetreFormes extends JComponent{
 		for(int i=formeArray.length-1;i>=0;i--){
 			if(formeArray[i] instanceof Forme && formeArray[i] != null){
 				switch(formeArray[i].getName()){
-				case "<RECTANGLE>" :
+				case "RECTANGLE" :
 					paintRectangle(g,i);
 					break;
-				case "<OVALE>" :
+				case "OVALE" :
 					paintOvale(g,i);
 					break;
-				case "<CARRE>" :
+				case "CARRE" :
 					paintCarre(g,i);
 					break;
-				case "<CERCLE>" :
+				case "CERCLE" :
 					paintCercle(g,i);
 					break;
-				case "<LIGNE>" :
+				case "LIGNE" :
 					paintLigne(g,i);
 					break;
 				}
