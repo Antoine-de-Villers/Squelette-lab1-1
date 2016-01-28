@@ -14,7 +14,6 @@ import java.awt.Color;
 import ca.etsmtl.log.util.IDLogger;
 
 public class CreateurForme {
-	private String[] parts;
 	private int nseq;
 	private String name;
 	private int x1;
@@ -62,8 +61,6 @@ public class CreateurForme {
 			//C'est un cercle
 		}
 		Forme forme = create();
-		
-		forme = new Rectangle(nseq,name,x1,x2,x3,x4);
 		
 	//	logger.logID(forme.getID());
 		return forme;

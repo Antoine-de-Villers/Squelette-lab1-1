@@ -24,26 +24,13 @@ public class DecomposerChaine {
 	    	Matcher m = p.matcher(info);
 	    	m.find();
 			
-			
-			
 			String mseqString = m.group(1).trim();
-			System.out.println(mseqString);
 
 			nseq = Integer.parseInt(mseqString);
 			name = m.group(2).trim();
 			
-			System.out.println(name);
 			coordonnees = m.group(3);
 			parts=coordonnees.split(" ");			
-			
-			System.out.println(parts[1]);
-			System.out.println(parts[2]);
-			System.out.println(parts[3]);
-			try{
-			System.out.println(parts[4]);
-			}catch(Exception e){
-				//C'est un cercle
-			}
 			
 			x1= Integer.parseInt(parts[1]);
 			x2= Integer.parseInt(parts[2]);
