@@ -74,7 +74,7 @@ public class CommBase {
 		reader = new BufferedReader(new InputStreamReader(inS));
 		writer = new BufferedWriter(new OutputStreamWriter(outS));
 		isReady=true;
-		}catch(ConnectException e){
+		}catch(SocketException e){
 			JOptionPane.showMessageDialog(null, "La connection n'a pas pu être établie", "Error",
 					JOptionPane.ERROR_MESSAGE);
 		}catch(Exception e){

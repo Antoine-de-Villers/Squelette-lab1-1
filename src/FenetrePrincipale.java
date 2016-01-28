@@ -16,8 +16,8 @@ Historique des modifications
 import java.awt.BorderLayout;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-
 import javax.swing.JFrame;
+
 
 /**
  * Cette classe représente la fenêtre principale de l'application 
@@ -42,9 +42,19 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener{
 		this.add(fenetreFormes, BorderLayout.CENTER); // Ajoute la fenêtre de forme à la fenètre principale
 		this.pack(); // Ajuste la dimension de la fenêtre principale selon celle de ses composants
 		this.setVisible(true); // Rend la fenêtre principale visible.
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //... à réviser selon le comportement que vous désirez ...
+		this.setDefaultCloseOperation(quit()); //... à réviser selon le comportement que vous désirez ...
 	}
 
+/**
+ * Ferme la connection au serveur avant de quitter lorsqu'on clique sur X
+ * @return Quitter lorsqu'on clique sur le X
+ */
+	public int quit(){
+		menu.comm.stopComm();
+		return JFrame.EXIT_ON_CLOSE;
+		
+	}
+	
 	// Appelé lorsque le sujet lance "firePropertyChanger"
 	@Override
 	public void propertyChange(PropertyChangeEvent arg0) {

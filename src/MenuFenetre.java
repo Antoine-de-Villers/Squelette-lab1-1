@@ -155,7 +155,7 @@ public class MenuFenetre extends JMenuBar {
 		JMenu menu = creerMenu(MENU_FICHIER_TITRE, new String[] { MENU_FICHIER_QUITTER });
 		menu.getItem(0).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				comm.stop();
+				comm.stopComm();
 				try {
 					Thread.sleep(DELAI_QUITTER_MSEC);
 				} catch (InterruptedException e) {
