@@ -49,24 +49,45 @@ public abstract class Forme{
 		this.x2=x2;
 		this.x3=x3;
 	}
+	/**
+	 * @return le code identifiant de la forme
+	 */
 	public int getID(){
 		return this.nseq;
 	}
+	/**
+	 * @return le nom de la forme
+	 */
 	public String getName(){
 		return this.name;
 	}
+	/**
+	 * @return la couleur de la forme
+	 */
 	public Color getColor(){
 		return this.color;
 	}
+	/**
+	 * @return la position x1
+	 */
 	public int getX1(){
 		return this.x1;
 	}
+	/**
+	 * @return la position x2
+	 */
 	public int getX2(){
 		return this.x2;
 	}
+	/**
+	 * @return la position x3
+	 */
 	public int getX3(){
 		return this.x3;
 	}
+	/**
+	 * @return la position x4
+	 */
 	public int getX4(){
 		return this.x4;
 	}

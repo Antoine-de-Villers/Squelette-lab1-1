@@ -1,6 +1,11 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Classe qui decompose la chaine de caractère du serveur
+ * @author Etienne
+ *
+ */
 public class DecomposerChaine {
 	private String[] parts;
 		private int nseq;
@@ -11,15 +16,27 @@ public class DecomposerChaine {
 		private int x3;
 		private int x4;
 		
+	    /**
+	     * Constructeur
+	     */
 	    public DecomposerChaine(){
 		
 	}
 	    
+	    /**
+	     * Méthode qui sépare les infos de la chaine selon un "pattern"
+	     * @param info
+	     */
 	    public void Split(String info){
 	    	Pattern p = Pattern.compile("(.*)<(.*)>(.*)</\\2>");  	
 	    	findtag(p, info);			
 	    }
 	    
+	    /**
+	     * Méthode qui instanci les différentes infos dans des attributs
+	     * @param p
+	     * @param info
+	     */
 	    private void findtag(Pattern p, String info) {
 	    	Matcher m = p.matcher(info);
 	    	m.find();
@@ -43,26 +60,44 @@ public class DecomposerChaine {
 			
 		}
 	
+		/**
+		 * @return le nom de la forme
+		 */
 		public String getName(){
 	    	return name;
 	    }
 	    
+	    /**
+	     * @return la position x1
+	     */
 	    public int getX1(){
 	    	return x1;
 	    }
 	    
+	    /**
+	     * @return la position x2
+	     */
 	    public int getX2(){
 	    	return x2;
 	    }
 	    
+	    /**
+	     * @return la position x3
+	     */
 	    public int getX3(){
 	    	return x3;
 	    }
 	    
+	    /**
+	     * @return la position x4
+	     */
 	    public int getX4(){
 	    	return x4;
 	    }
 	    
+	    /**
+	     * @return le code de la forme
+	     */
 	    public int getNSEQ(){
 		  return nseq;
 	  }

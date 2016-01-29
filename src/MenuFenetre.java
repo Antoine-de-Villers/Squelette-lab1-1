@@ -192,9 +192,9 @@ public class MenuFenetre extends JMenuBar {
 		arreterMenuItem.setEnabled(comm.isActif()&&comm.isReady());
 		demarrerCommMenuItem.setEnabled(!comm.isReady());
 		arreterCommMenuItem.setEnabled(comm.isReady());
+
 	}
 	
-
 	/**
 	 * Créer un élément de menu à partir d'un champs principal et ses
 	 * éléments

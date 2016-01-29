@@ -91,6 +91,9 @@ public class CommBase {
 		isActif = false;
 	}
 	
+	/**
+	 * Arrete la communication avec le serveur, ferme le socket
+	 */
 	public void stopComm(){
 		stop();
 			try {
@@ -105,6 +108,10 @@ public class CommBase {
 		isReady= false;
 	}
 
+	/**
+	 * @param portNum
+	 * @param host
+	 */
 	public void variablesSocket(int portNum, String host){
 		port = portNum;
 		hostname = host;
@@ -166,6 +173,9 @@ public class CommBase {
 		}
 		return isActif;
 	}
+	/**
+	 * @return si le serveur est prêt
+	 */
 	public boolean isReady(){
 		return isReady;
 	}
