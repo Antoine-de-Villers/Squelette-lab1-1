@@ -10,7 +10,7 @@ Historique des modifications
 2013-05-03 Version initiale
  *@author Antoine de Villers
  *@author Étienne Rousseau
-2016-01-22 Version finale
+2016/26/01 Version finale
  *******************************************************/  
 
 import java.awt.BorderLayout;

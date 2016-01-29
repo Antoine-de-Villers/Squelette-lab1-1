@@ -43,11 +43,6 @@ public class CreateurForme {
 	 * @return une instance d'une des sous-classes de la classe abstraite
 	 *         Forme avec les paramètres passés par la chaîne d'entrée.
 	 */
-	/**
-	 * Appelle la méthode de la classe DecomposerChaine pour obtenir les différentes infos sur la forme
-	 * @param info
-	 * @return la forme en question
-	 */
 	public Forme splitInfo(String info){
 		
         chaine.Split(info);
@@ -108,6 +103,7 @@ public class CreateurForme {
 	/**
 	 * Classe rectangle
 	 * @author Etienne
+	 * @author Antoine
 	 *
 	 */
 	public class Rectangle extends Forme{
@@ -130,7 +126,7 @@ public class CreateurForme {
 	/**
 	 * Classe ovale
 	 * @author Etienne
-	 *
+	 * @author Antoine
 	 */
 	public class Ovale extends Forme{
 
@@ -151,6 +147,7 @@ public class CreateurForme {
 	/**
 	 * Classe carre
 	 * @author Etienne
+	 * @author Antoine
 	 *
 	 */
 	public class Carre extends Forme{
@@ -172,6 +169,7 @@ public class CreateurForme {
 	/**
 	 * Classe cercle
 	 * @author Etienne
+	 * @author Antoine
 	 *
 	 */
 	public class Cercle extends Forme{
@@ -192,6 +190,7 @@ public class CreateurForme {
 	/**
 	 * Classe ligne
 	 * @author Etienne
+	 * @author Antoine
 	 *
 	 */
 	public class Ligne extends Forme{

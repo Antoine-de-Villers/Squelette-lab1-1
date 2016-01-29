@@ -9,6 +9,9 @@ Historique des modifications
  *@author Antoine de Villers
  *@author Étienne Rousseau
 2016-01-15 Version initiale
+ *@author Antoine de Villers
+ *@author Étienne Rousseau
+2016-01-28 Version finale
  *******************************************************/  
 import java.awt.Color;
 

@@ -10,7 +10,7 @@ Historique des modifications
 2013-05-03 Version initiale
  *@author Antoine de Villers
  *@author �tienne Rousseau
-2016-01-22 Version finale
+2016-01-28 Version finale
  *******************************************************/  
 
 import java.awt.Dimension;
@@ -20,8 +20,11 @@ import javax.swing.JComponent;
 /**
  * Cette fenêtre gère l'affichage des formes 
  * @author Patrice Boucher
- * @date 2013/05/04
+ * @author Antoine
+ * @author Etienne
+ * @date 2016/26/01
  * @author AM30890
+ * @author AM93710
  *
  */
 public class FenetreFormes extends JComponent{
