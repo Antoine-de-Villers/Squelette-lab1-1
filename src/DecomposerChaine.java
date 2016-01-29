@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 /**
  * Classe qui decompose la chaine de caractère du serveur
  * @author Etienne
- *
+ * @author Antoine
  */
 public class DecomposerChaine {
 	private String[] parts;

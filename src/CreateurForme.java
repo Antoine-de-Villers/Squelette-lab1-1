@@ -22,9 +22,7 @@ public class CreateurForme {
 	private int x4;
     private IDLogger logger = IDLogger.getInstance(); //Méthode statique
     private DecomposerChaine chaine = new DecomposerChaine();
-	/*
-	 * Constructeur
-	 */
+
 	/**
 	 * constructeur
 	 */
