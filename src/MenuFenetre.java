@@ -123,6 +123,7 @@ public class MenuFenetre extends JMenuBar {
 	menu.add(forme);
 	menu.add(formeInverse);
 	menu.add(distance);
+	add(menu);
 	}
 	
 	
@@ -187,8 +188,6 @@ public class MenuFenetre extends JMenuBar {
 	 * Activer ou désactiver les items du menu selon la sélection.
 	 */
 	public void rafraichirMenus() {
-		demarrerMenuItem.setEnabled(!comm.isActif()&&comm.isReady());
-		arreterMenuItem.setEnabled(comm.isActif()&&comm.isReady());
 		demarrerCommMenuItem.setEnabled(!comm.isReady());
 		arreterCommMenuItem.setEnabled(comm.isReady());
 
