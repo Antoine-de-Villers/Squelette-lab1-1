@@ -36,6 +36,7 @@ public class FenetreFormes extends JComponent{
 	public CreateurForme createur;
 	private Forme forme = null;
 	private Forme[] formeArray = new Forme[10];
+	private MyList listFormes = new MyList();
 
 
 	/**

@@ -54,4 +54,8 @@ public class MyList {
     public int getLength(){
     	return ListLength;
     }
+    
+    public void triAireCroissant(){
+    	
+    }
 }
