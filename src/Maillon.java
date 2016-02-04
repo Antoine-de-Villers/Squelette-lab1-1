@@ -1,12 +1,11 @@
 
 public class Maillon {
 	Object object;
-	Maillon next;
-	int index;
-public Maillon(Object o, Maillon m, int i){
+    Maillon next;	
+	
+public Maillon(Object o, Maillon m){
 	this.object = o;
 	this.next = m;
-	this.index = i;
-}
 
+}
 }

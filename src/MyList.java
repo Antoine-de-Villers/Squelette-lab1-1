@@ -2,16 +2,17 @@
 public class MyList {
 	protected Maillon first;
 	protected Maillon last;
-	protected int ListLength = 0;
+	protected int ListLength;
 	protected boolean listEmpty = true;
 	
     public MyList(){
 	first = null;
+	ListLength = 0;
 }
     
     public void addItem(Object o){
     	ListLength++;
-    	Maillon m = new Maillon(o, null, ListLength-1);
+    	Maillon m = new Maillon(o, null);
     	if(first == null){
     		first = m;
     	}
@@ -22,20 +23,25 @@ public class MyList {
     }
     
     public Object getItem(int ind){
-    	Maillon checkIndex = first;
-    	boolean done = false;
-    	int countToIndex = 0;
-    	
-    	  while(!done){
-    		  if(countToIndex == ind){
-      			done = true;
-      		}
-      		if(!done){
-      			checkIndex = checkIndex.next;
-          		countToIndex++;
-      		}
-    	  }    		    		   	
-		return checkIndex;
+    	int count = 0;
+    	Boolean done = false;
+    	Maillon maillonSearched;
+    	maillonSearched = first;
+    	while(!done){
+    		if(count == ind){
+        		done=true;
+        	}
+    		else if(maillonSearched.next == null){
+    			done = true;
+    			maillonSearched = null;
+    		}
+        	else{
+        		maillonSearched = maillonSearched.next;
+        		count++;
+        	}
+    	}
+  
+    	return maillonSearched;
     }
     
     public boolean isEmpty(){
