@@ -2,16 +2,16 @@
 public class MyList {
 	protected Maillon first;
 	protected Maillon last;
-	protected int ListLength;
+	protected int listLength;
 	protected boolean listEmpty = true;
 	
     public MyList(){
 	first = null;
-	ListLength = 0;
+	listLength = 0;
 }
     
     public void addItem(Object o){
-    	ListLength++;
+    	listLength++;
     	Maillon m = new Maillon(o, null);
     	if(first == null){
     		first = m;
@@ -42,6 +42,27 @@ public class MyList {
     	}
        return maillonSearched.getObjet();
     }
+    
+    public Maillon getMaillon(int ind){
+    	int count = 0;
+    	Boolean done = false;
+    	Maillon maillonSearched;
+    	maillonSearched = first;
+    	while(!done){
+    		if(count == ind){
+        		done=true;
+        	}
+    		else if(maillonSearched.next == null){
+    			done = true;
+    			maillonSearched = null;
+    		}
+        	else{
+        		maillonSearched = maillonSearched.next;
+        		count++;
+        	}
+    	}
+       return maillonSearched;
+    }
  
     public boolean isEmpty(){
     	if(first == null) {
@@ -51,10 +72,19 @@ public class MyList {
     }
     
     public int getLength(){
-    	return ListLength;
+    	return listLength;
     }
     
     public void triAireCroissant(){
-    	
+    	for(int i = 0; i < listLength - 1; i++){
+    		int temp = i;
+    		for(int j = i + 1; j < listLength - 1; j++){
+    			if(((Forme) getItem(j)).getAire() < ((Forme) getItem(temp)).getAire()){
+    			   getMaillon(temp).setObject(getItem(j));
+    			   getMaillon(j).setObject(getItem(i));
+    			   getMaillon(i).setObject(getItem(temp));
+    			}
+    		}
+    	}
     }
 }

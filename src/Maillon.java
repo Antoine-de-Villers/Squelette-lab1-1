@@ -11,4 +11,7 @@ public Maillon(Object o, Maillon m){
 public Object getObjet(){
 	return object;
 }
+public void setObject(Object o){
+    this.object = o;
+}
 }
