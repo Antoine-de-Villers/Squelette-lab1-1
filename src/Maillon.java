@@ -1,11 +1,14 @@
 
 public class Maillon {
-	Object object;
-    Maillon next;	
+	public Object object;
+   public Maillon next;	
 	
 public Maillon(Object o, Maillon m){
 	this.object = o;
 	this.next = m;
 
+}
+public Object getObjet(){
+	return object;
 }
 }

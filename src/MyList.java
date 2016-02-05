@@ -40,8 +40,7 @@ public class MyList {
         		count++;
         	}
     	}
-  
-    	return maillonSearched;
+       return maillonSearched.getObjet();
     }
     
     public boolean isEmpty(){
