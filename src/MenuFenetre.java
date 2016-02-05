@@ -102,12 +102,19 @@ public class MenuFenetre extends JMenuBar {
 	private void addMenuOrdre(){
 	JMenu menu = creerMenu(MENU_ORDRE_TITRE, new String[]{});	
 	JRadioButtonMenuItem sequenceCroissante = new JRadioButtonMenuItem("Sequence croissante");
+	
 	JRadioButtonMenuItem sequenceDecroissante = new JRadioButtonMenuItem("Sequence decroissante");
+	
 	JRadioButtonMenuItem aireCroissante = new JRadioButtonMenuItem("Aire croissante");
+	
 	JRadioButtonMenuItem aireDecroissante = new JRadioButtonMenuItem("Aire decroissante");
+	
 	JRadioButtonMenuItem forme = new JRadioButtonMenuItem("Formes");
+	
 	JRadioButtonMenuItem formeInverse = new JRadioButtonMenuItem("Formes inversees");
+	
 	JRadioButtonMenuItem distance = new JRadioButtonMenuItem("Distance maximale entre deux points");
+	
 	ButtonGroup group = new ButtonGroup();
 	group.add(sequenceCroissante);
 	group.add(sequenceDecroissante);
@@ -138,7 +145,6 @@ public class MenuFenetre extends JMenuBar {
 			hostName = parts[0];
 			port = parts[1];
 			portNum = Integer.parseInt(port);
-			comm.readyComm();
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, "Le port doit Ítre un nombre", "Error", JOptionPane.ERROR_MESSAGE);
 		} catch (Exception e) {
@@ -146,14 +152,22 @@ public class MenuFenetre extends JMenuBar {
 					JOptionPane.ERROR_MESSAGE);
 		}
 		comm.variablesSocket(portNum, hostName);
+		comm.readyComm();
 	}
 
 		/**
 	 * Cr√©er le menu "File".
 	 */
 	protected void addMenuFichier() {
-		JMenu menu = creerMenu(MENU_FICHIER_TITRE, new String[] { MENU_FICHIER_QUITTER, MENU_FICHIER_OBTENIRFORME });
+		JMenu menu = creerMenu(MENU_FICHIER_TITRE, new String[] {MENU_FICHIER_OBTENIRFORME ,MENU_FICHIER_QUITTER });
 		menu.getItem(0).addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				comm.start();
+		}
+		});
+		menu.getItem(0).setAccelerator(
+				KeyStroke.getKeyStroke(MENU_FICHIER_OBTENIRFORME_TOUCHE_RACC, MENU_FICHIER_OBTENIRFORME_TOUCHE_MASK));
+		menu.getItem(1).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				comm.stopComm();
 				try {
@@ -164,7 +178,7 @@ public class MenuFenetre extends JMenuBar {
 				System.exit(0);
 			}
 		});
-		menu.getItem(0).setAccelerator(
+		menu.getItem(1).setAccelerator(
 				KeyStroke.getKeyStroke(MENU_FICHIER_QUITTER_TOUCHE_RACC, MENU_FICHIER_QUITTER_TOUCHE_MASK));
 		add(menu);
 	}

@@ -41,6 +41,7 @@ public class CommBase {
 	private InputStream inS;
 	private OutputStream outS;
 	private String info = null;
+	private int nbForme = 0;
 	private int port=0;
 	private String hostname=null;
 
@@ -153,7 +154,14 @@ public class CommBase {
 					//La méthode suivante alerte l'observateur 
 					//System.out.println(info);
 					if(listener!=null)
-						firePropertyChange("ENVOIE", null, (Object) info); 
+						if(nbForme!=10){
+						firePropertyChange("ENVOIE", null, (Object) info);
+						nbForme++;
+						}
+						else{
+							nbForme=0;
+							stop();
+						}
 				}
 				//return null;
 			}
