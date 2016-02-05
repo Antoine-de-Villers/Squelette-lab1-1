@@ -65,5 +65,8 @@ public class FenetrePrincipale extends JFrame implements PropertyChangeListener{
 		if(arg0.getPropertyName().equals("CONNECTION INTERROMPUE")){
 			menu.rafraichirMenus();
 		}
+		if(arg0.getPropertyName().equals("TRI")){
+			fenetreFormes.tri((String) arg0.getNewValue());
+		}
 	}
 }

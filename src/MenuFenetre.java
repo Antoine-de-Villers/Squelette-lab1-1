@@ -51,13 +51,19 @@ public class MenuFenetre extends JMenuBar {
 
 	private static final String MESSAGE_DIALOGUE_A_PROPOS = "app.frame.dialog.about";
 
-	private JMenuItem arreterMenuItem, demarrerMenuItem, arreterCommMenuItem, demarrerCommMenuItem;
+	private  JMenuItem arreterMenuItem, demarrerMenuItem, arreterCommMenuItem, demarrerCommMenuItem;
+    private JRadioButtonMenuItem sequenceCroissante = new JRadioButtonMenuItem("Sequence croissante");
+	private JRadioButtonMenuItem sequenceDecroissante = new JRadioButtonMenuItem("Sequence decroissante");
+	private JRadioButtonMenuItem aireCroissante = new JRadioButtonMenuItem("Aire croissante");
+	private JRadioButtonMenuItem aireDecroissante = new JRadioButtonMenuItem("Aire decroissante");
+	private JRadioButtonMenuItem forme = new JRadioButtonMenuItem("Formes");
+	private JRadioButtonMenuItem formeInverse = new JRadioButtonMenuItem("Formes inversees");	
+	private JRadioButtonMenuItem distance = new JRadioButtonMenuItem("Distance maximale entre deux points");
 	private static final int DELAI_QUITTER_MSEC = 200;
 	private static String[] parts;
 	private static String port = null;
 	private static String hostName = null;
 	private static int portNum;
-
 	CommBase comm; // Pour activer/désactiver la communication avec le serveur
 
 	/**
@@ -101,20 +107,16 @@ public class MenuFenetre extends JMenuBar {
 
 	private void addMenuOrdre(){
 	JMenu menu = creerMenu(MENU_ORDRE_TITRE, new String[]{});	
-	JRadioButtonMenuItem sequenceCroissante = new JRadioButtonMenuItem("Sequence croissante");
-	
-	JRadioButtonMenuItem sequenceDecroissante = new JRadioButtonMenuItem("Sequence decroissante");
-	
-	JRadioButtonMenuItem aireCroissante = new JRadioButtonMenuItem("Aire croissante");
-	
-	JRadioButtonMenuItem aireDecroissante = new JRadioButtonMenuItem("Aire decroissante");
-	
-	JRadioButtonMenuItem forme = new JRadioButtonMenuItem("Formes");
-	
-	JRadioButtonMenuItem formeInverse = new JRadioButtonMenuItem("Formes inversees");
-	
-	JRadioButtonMenuItem distance = new JRadioButtonMenuItem("Distance maximale entre deux points");
-	
+	sequenceCroissante.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0){
+			comm.tri("sequence Croissante");
+		}
+	});
+	aireCroissante.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0){
+			comm.tri("aire Croissante");
+		}
+	});
 	ButtonGroup group = new ButtonGroup();
 	group.add(sequenceCroissante);
 	group.add(sequenceDecroissante);
@@ -163,6 +165,9 @@ public class MenuFenetre extends JMenuBar {
 		menu.getItem(0).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				comm.start();
+				if (aireCroissante.isSelected()){
+					comm.tri("aire Croissante");
+				}
 		}
 		});
 		menu.getItem(0).setAccelerator(
@@ -170,6 +175,7 @@ public class MenuFenetre extends JMenuBar {
 		menu.getItem(1).addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				comm.stopComm();
+				
 				try {
 					Thread.sleep(DELAI_QUITTER_MSEC);
 				} catch (InterruptedException e) {

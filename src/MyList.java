@@ -75,16 +75,37 @@ public class MyList {
     	return listLength;
     }
     
+    public void triCroissant(){
+    	for(int i = listLength-1; i>1;i--){
+    		for(int j=i;j>0;j--){
+    			if(((Forme) getItem(i)).getID() < ((Forme)getItem(j)).getID()){
+        			Object temp = getItem(i);
+        			(getMaillon(i)).setObject(getItem(j));
+        			(getMaillon(j)).setObject(temp);
+        		}
+    		}
+    		
+    	}
+    	for(int i = 0; i < listLength; i++){
+    		System.out.println(((Forme)getItem(i)).getID());
+    	}
+    }
+    
+    
     public void triAireCroissant(){
     	for(int i = 0; i < listLength - 1; i++){
-    		int temp = i;
-    		for(int j = i + 1; j < listLength - 1; j++){
-    			if(((Forme) getItem(j)).getAire() < ((Forme) getItem(temp)).getAire()){
-    			   getMaillon(temp).setObject(getItem(j));
+    		for(int j = i + 1; j < listLength; j++){
+    			if(((Forme) getItem(j)).getAire() < ((Forme) getItem(i)).getAire()){
+    			   Object temp=getItem(j);
     			   getMaillon(j).setObject(getItem(i));
-    			   getMaillon(i).setObject(getItem(temp));
+    			   getMaillon(i).setObject(temp);
     			}
     		}
     	}
+    	
+    	for(int i = 0; i < listLength; i++){
+    		System.out.println(((Forme)getItem(i)).getAire());
+    	}
+    	
     }
 }

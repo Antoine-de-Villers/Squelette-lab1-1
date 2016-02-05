@@ -29,7 +29,7 @@ import java.net.UnknownHostException;
  */
 public class CommBase {
 
-	private final int DELAI = 1000;
+	private final int DELAI = 10;
 	@SuppressWarnings("rawtypes")
 	private SwingWorker threadComm =null;
 	private PropertyChangeListener listener = null;
@@ -108,7 +108,13 @@ public class CommBase {
 		hostname=null;
 		isReady= false;
 	}
+	
+	
+	public void tri (String tri){
+			threadComm.firePropertyChange("TRI",null,tri);
+	}
 
+	
 	/**
 	 * @param portNum
 	 * @param host

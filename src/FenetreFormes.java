@@ -14,6 +14,7 @@ Historique des modifications
  *******************************************************/  
 
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -60,7 +61,6 @@ public class FenetreFormes extends JComponent{
 	public void paintComponent(Graphics g){
 		for(int i=listFormes.getLength()-1;i>=0;i--){
 			if(listFormes.getItem(i) instanceof Forme && listFormes.getItem(i) != null){
-				paintPointille((Graphics2D)g,i);
 				switch(((Forme)listFormes.getItem(i)).getName()){
 				case "RECTANGLE" :
 					paintRectangle(g,i);
@@ -78,20 +78,23 @@ public class FenetreFormes extends JComponent{
 					paintLigne(g,i);
 					break;
 				}
+				paintPointille((Graphics2D)g,i);
 			}
 		}
 		x=0;
 		y=0;
 	}
 
-	public void paintPointille(Graphics2D g, int i){
+	public void paintPointille(Graphics2D g1, int i){
+		Graphics2D g = (Graphics2D) g1.create();
 		float dash1[] = {10.0f};
 		BasicStroke pointille = new BasicStroke(1.0f,
                 BasicStroke.CAP_BUTT,
                 BasicStroke.JOIN_MITER,
                 10.0f, dash1, 0.0f);
 		g.setStroke(pointille);
-		g.drawRect(x, y,((Forme)listFormes.getItem(i)).getWidth() , ((Forme)listFormes.getItem(i)).getHeight());
+		g.setColor(Color.BLACK);
+		g.drawRect(x, y,((Forme)listFormes.getItem(i)).getWidth()+2 , ((Forme)listFormes.getItem(i)).getHeight()+2);
 		x+=40;
 		y+=40;
 		
@@ -106,9 +109,11 @@ public class FenetreFormes extends JComponent{
 	public void paintRectangle(Graphics g,int i){
 		int width = ((Forme)listFormes.getItem(i)).getWidth();
 		int height = ((Forme)listFormes.getItem(i)).getHeight();
-		g.drawRect(x,y,width,height);
+		g.setColor(Color.BLACK);
+		g.drawRect(x+1,y+1,width,height);
 		g.setColor(((Forme)listFormes.getItem(i)).getColor());
-		g.fillRect(x,y,width,height);
+		g.fillRect(x+1,y+1,width,height);
+		
 	}
 	
 	/**
@@ -119,9 +124,10 @@ public class FenetreFormes extends JComponent{
 	public void paintOvale(Graphics g, int i){
 		int width = ((Forme)listFormes.getItem(i)).getWidth();
 		int height = ((Forme)listFormes.getItem(i)).getHeight();
-		g.drawOval(x,y,width,height);
+		g.setColor(Color.BLACK);
+		g.drawOval(x+1,y+1,width,height);
 		g.setColor(((Forme)listFormes.getItem(i)).getColor());
-		g.fillOval(x,y,width,height);
+		g.fillOval(x+1,y+1,width,height);
 	}
 
 	/**
@@ -132,9 +138,10 @@ public class FenetreFormes extends JComponent{
 	public void paintCarre(Graphics g, int i){
 		int width = ((Forme)listFormes.getItem(i)).getWidth();
 		int height = ((Forme)listFormes.getItem(i)).getHeight();
-		g.drawRect(x,y,width,height);
+		g.setColor(Color.BLACK);
+		g.drawRect(x+1,y+1,width,height);
 		g.setColor(((Forme)listFormes.getItem(i)).getColor());
-		g.fillRect(x,y,width,height);
+		g.fillRect(x+1,y+1,width,height);
 	}
 
 	/**
@@ -143,9 +150,10 @@ public class FenetreFormes extends JComponent{
 	 * @param i = l'index du tableau
 	 */
 	public void paintCercle(Graphics g, int i){
-		g.drawOval(((Forme)listFormes.getItem(i)).getX1(),((Forme)listFormes.getItem(i)).getX2(),((Forme)listFormes.getItem(i)).getX3(),((Forme)listFormes.getItem(i)).getX3());
+		g.setColor(Color.BLACK);
+		g.drawOval(x+1,y+1,((Forme)listFormes.getItem(i)).getWidth(),((Forme)listFormes.getItem(i)).getHeight());
 		g.setColor(((Forme)listFormes.getItem(i)).getColor());
-		g.fillOval(x,y,((Forme)listFormes.getItem(i)).getWidth(),((Forme)listFormes.getItem(i)).getHeight());
+		g.fillOval(x+1,y+1,((Forme)listFormes.getItem(i)).getWidth(),((Forme)listFormes.getItem(i)).getHeight());
 	}
 
 	/**
@@ -155,7 +163,7 @@ public class FenetreFormes extends JComponent{
 	 */
 	public void paintLigne(Graphics g, int i){
 		g.setColor(((Forme)listFormes.getItem(i)).getColor());
-		g.drawLine(x,y, x+((Forme)listFormes.getItem(i)).getWidth(),y+((Forme)listFormes.getItem(i)).getHeight());
+		g.drawLine(x+1,y+1, x+((Forme)listFormes.getItem(i)).getWidth(),y+((Forme)listFormes.getItem(i)).getHeight());
 	}
 
 	
@@ -172,6 +180,18 @@ public class FenetreFormes extends JComponent{
 			listFormes.addItem(forme);
 		}
 		repaint();
+	}
+	
+	public void tri(String type){
+		switch(type){
+		case "sequence Croissante":
+			listFormes.triCroissant();
+			break;
+		case "aire Croissante":
+			listFormes.triAireCroissant();
+			break;
+		}
+	   repaint();
 	}
 
 	/*

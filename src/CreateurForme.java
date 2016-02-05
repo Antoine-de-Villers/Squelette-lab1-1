@@ -123,13 +123,13 @@ public class CreateurForme {
 
 		@Override
 		public double getAire() {		
-			aire = (x3-x1)*(x4-x2);
+			aire = Math.abs(x3-x1)*Math.abs(x4-x2);
 			return aire;
 		}
 
 		@Override
 		public double getDistanceMax() {
-			distanceMax = Math.sqrt(((x3-x1)^2)+((x4-x2)^2));
+			distanceMax = Math.sqrt((Math.abs(x3-x1)^2)+(Math.abs(x4-x2)^2));
 			return distanceMax;
 		}
 
@@ -172,7 +172,7 @@ public class CreateurForme {
 
 		@Override
 		public double getAire() {
-			aire = ((x3-x1)/2)*((x4-x2)/2)*Math.PI;
+			aire = (Math.abs(x3-x1)/2)*(Math.abs(x4-x2)/2)*Math.PI;
 			return aire;		
 		}
 
@@ -216,12 +216,12 @@ public class CreateurForme {
 		 */
 		public Carre(int nseq,String name, int x1, int x2, int x3, int x4){
 			super(nseq,name,x1,x2,x3,x4);
-			color=new Color(0,0,0);
+			color=new Color(255,0,255);
 		}
 
 		@Override
 		public double getAire() {			
-			aire = (x3-x1)*(x4-x2);
+			aire = Math.abs(x3-x1)*Math.abs(x4-x2);
 			return aire;
 		}
 
@@ -268,7 +268,7 @@ public class CreateurForme {
 
 		@Override
 		public double getAire() {
-			aire = (x3^2)*Math.PI;
+			aire = Math.abs(x3^2)*Math.PI;
 			return aire;
 		}
 
@@ -314,7 +314,7 @@ public class CreateurForme {
 
 		@Override
 		public double getAire() {
-			aire = Math.sqrt(((x3-x1)^2)+((x4-x2)^2));
+			aire = Math.sqrt((Math.abs(x3-x1)^2)+(Math.abs(x4-x2)^2));
 			return aire;
 		}
 
