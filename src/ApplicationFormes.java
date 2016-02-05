@@ -29,7 +29,8 @@ public class ApplicationFormes{
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		ApplicationFormes application = new ApplicationFormes();
+		ApplicationFormes application = new ApplicationFormes();		
+		
 	}
 
 	/**

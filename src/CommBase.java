@@ -29,7 +29,7 @@ import java.net.UnknownHostException;
  */
 public class CommBase {
 
-	private final int DELAI = 1000;
+	private final int DELAI = 10;
 	@SuppressWarnings("rawtypes")
 	private SwingWorker threadComm =null;
 	private PropertyChangeListener listener = null;
@@ -41,6 +41,7 @@ public class CommBase {
 	private InputStream inS;
 	private OutputStream outS;
 	private String info = null;
+	private int nbForme = 0;
 	private int port=0;
 	private String hostname=null;
 
@@ -153,7 +154,14 @@ public class CommBase {
 					//La méthode suivante alerte l'observateur 
 					//System.out.println(info);
 					if(listener!=null)
-						firePropertyChange("ENVOIE", null, (Object) info); 
+						if(nbForme!=10){
+						firePropertyChange("ENVOIE", null, (Object) info);
+						nbForme++;
+						}
+						else{
+							nbForme=0;
+							stop();
+						}
 				}
 				//return null;
 			}

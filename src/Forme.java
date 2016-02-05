@@ -23,6 +23,8 @@ public abstract class Forme{
 	protected int x2;
 	protected int x3;
 	protected int x4;
+	protected double aire;
+	protected double distanceMax;
 
 
 
@@ -94,4 +96,19 @@ public abstract class Forme{
 	public int getX4(){
 		return this.x4;
 	}
+	
+	public void setX1(int i){
+		this.x1 = i;
+	}
+    public void setX2(int i){
+    	this.x2 = i;
+	}
+    public void setX3(int i){
+    	this.x3 = i;
+    }
+    public void setX4(int i){
+    	this.x4 = i;
+    }
+	public abstract double getAire();
+	public abstract double getDistanceMax();
 }

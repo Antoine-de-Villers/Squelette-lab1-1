@@ -121,6 +121,18 @@ public class CreateurForme {
 			color=new Color(112,222,232);
 		}
 
+		@Override
+		public double getAire() {		
+			aire = (x3-x1)*(x4-x2);
+			return aire;
+		}
+
+		@Override
+		public double getDistanceMax() {
+			distanceMax = Math.sqrt(((x3-x1)^2)+((x4-x2)^2));
+			return distanceMax;
+		}
+
 	}
 
 	/**
@@ -142,6 +154,21 @@ public class CreateurForme {
 		public Ovale(int nseq,String name, int x1, int x2, int x3, int x4){
 			super(nseq,name,x1,x2,x3,x4);
 			color=new Color(222,34,32);
+		}
+
+		@Override
+		public double getAire() {
+			aire = ((x3-x1)/2)*((x4-x2)/2)*Math.PI;
+			return aire;		
+		}
+
+		@Override
+		public double getDistanceMax() {
+			if((x3-x1) > (x4-x2)){
+				distanceMax = x3-x1;
+			}
+			else distanceMax = x4-x2;
+			return distanceMax;
 		}
 	}
 	/**
@@ -165,6 +192,18 @@ public class CreateurForme {
 			super(nseq,name,x1,x2,x3,x4);
 			color=new Color(0,0,0);
 		}
+
+		@Override
+		public double getAire() {			
+			aire = (x3-x1)*(x4-x2);
+			return aire;
+		}
+
+		@Override
+		public double getDistanceMax() {
+			distanceMax = Math.sqrt(((x3-x1)^2)+((x4-x2)^2));
+			return distanceMax;
+		}
 	}
 	/**
 	 * Classe cercle
@@ -185,6 +224,18 @@ public class CreateurForme {
 		public Cercle(int nseq,String name, int x1, int x2, int x3){
 			super(nseq,name,x1,x2,x3);
 			color=new Color(12,7,255);
+		}
+
+		@Override
+		public double getAire() {
+			aire = (x3^2)*Math.PI;
+			return aire;
+		}
+
+		@Override
+		public double getDistanceMax() {
+			distanceMax = x3*2;
+			return distanceMax;
 		}
 	}
 	/**
@@ -207,6 +258,18 @@ public class CreateurForme {
 		public Ligne(int nseq,String name, int x1, int x2, int x3, int x4){
 			super(nseq,name,x1,x2,x3,x4);
 			color=new Color(9,234,33);
+		}
+
+		@Override
+		public double getAire() {
+			aire = Math.sqrt(((x3-x1)^2)+((x4-x2)^2));
+			return aire;
+		}
+
+		@Override
+		public double getDistanceMax() {
+			distanceMax = Math.sqrt(((x3-x1)^2)+((x4-x2)^2));
+			return distanceMax;
 		}
 	}
 }

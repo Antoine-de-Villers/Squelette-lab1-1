@@ -17,6 +17,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JComponent;
 
+import jdk.management.resource.internal.inst.SocketOutputStreamRMHooks;
+
 /**
  * Cette fenêtre gère l'affichage des formes 
  * @author Patrice Boucher
@@ -36,6 +38,8 @@ public class FenetreFormes extends JComponent{
 	public CreateurForme createur;
 	private Forme forme = null;
 	private Forme[] formeArray = new Forme[10];
+	private MyList listFormes = new MyList();
+	private int i=0;
 
 
 	/**
@@ -134,10 +138,13 @@ public class FenetreFormes extends JComponent{
 	
 	public void creerFormes(String info){
 		forme = createur.splitInfo(info);		
-		for(int i=formeArray.length-1;i>0;i--){			
-			formeArray[i]=formeArray[i-1];
-		}	
-		formeArray[0] = forme;	
+		listFormes.addItem(forme);
+		System.out.println(((Forme)listFormes.getItem(i)).getName());
+		i++;
+	//	for(int i=formeArray.length-1;i>0;i--){			
+		//	formeArray[i]=formeArray[i-1];
+	//	}	
+	//	formeArray[0] = forme;	
 		repaint();
 	}
 
