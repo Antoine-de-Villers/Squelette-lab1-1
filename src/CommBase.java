@@ -29,7 +29,7 @@ import java.net.UnknownHostException;
  */
 public class CommBase {
 
-	private final int DELAI = 10;
+	private final int DELAI = 1000;
 	@SuppressWarnings("rawtypes")
 	private SwingWorker threadComm =null;
 	private PropertyChangeListener listener = null;

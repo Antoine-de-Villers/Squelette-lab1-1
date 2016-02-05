@@ -133,6 +133,20 @@ public class CreateurForme {
 			return distanceMax;
 		}
 
+		@Override
+		public int getHeight() {
+			height = x2 - x4;
+			height = Math.abs(height);
+			return height;
+		}
+
+		@Override
+		public int getWidth() {
+			width = x3 - x1;
+			width = Math.abs(width);
+			return width;
+		}
+
 	}
 
 	/**
@@ -170,6 +184,18 @@ public class CreateurForme {
 			else distanceMax = x4-x2;
 			return distanceMax;
 		}
+
+		@Override
+		public int getHeight() {
+			height = x4 * 2;
+			return height;
+		}
+
+		@Override
+		public int getWidth() {
+			width = x3 * 2;
+			return width;
+		}
 	}
 	/**
 	 * Classe carre
@@ -204,6 +230,20 @@ public class CreateurForme {
 			distanceMax = Math.sqrt(((x3-x1)^2)+((x4-x2)^2));
 			return distanceMax;
 		}
+
+		@Override
+		public int getHeight() {
+			height = x2 - x4;
+			height = Math.abs(height);
+			return height;
+		}
+
+		@Override
+		public int getWidth() {
+			width = x3 - x1;
+			width = Math.abs(width);
+			return width;
+		}
 	}
 	/**
 	 * Classe cercle
@@ -236,6 +276,18 @@ public class CreateurForme {
 		public double getDistanceMax() {
 			distanceMax = x3*2;
 			return distanceMax;
+		}
+
+		@Override
+		public int getHeight() {
+			height = x3 * 2;
+			return height;
+		}
+
+		@Override
+		public int getWidth() {
+			width = x3 * 2;
+			return width;
 		}
 	}
 	/**
@@ -270,6 +322,20 @@ public class CreateurForme {
 		public double getDistanceMax() {
 			distanceMax = Math.sqrt(((x3-x1)^2)+((x4-x2)^2));
 			return distanceMax;
+		}
+
+		@Override
+		public int getHeight() {
+			height = x2 - x4;
+			height = Math.abs(height);
+			return height;
+		}
+
+		@Override
+		public int getWidth() {
+			width = x3 - x1;
+			width = Math.abs(width);
+			return width;
 		}
 	}
 }

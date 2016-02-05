@@ -16,6 +16,7 @@ Historique des modifications
 import java.awt.Color;
 
 public abstract class Forme{
+	
 	protected  Color color;
 	protected int nseq;
 	protected String name;
@@ -25,6 +26,8 @@ public abstract class Forme{
 	protected int x4;
 	protected double aire;
 	protected double distanceMax;
+	protected int height;
+	protected int width;
 
 
 
@@ -33,6 +36,12 @@ public abstract class Forme{
 	 */
 	public Forme() {	
 	}
+	
+	public abstract double getAire();
+	public abstract double getDistanceMax();
+	public abstract int getHeight();
+	public abstract int getWidth();
+	
 	/**
 	 * Constructeur formes sauf cercle
 	 */
@@ -109,6 +118,4 @@ public abstract class Forme{
     public void setX4(int i){
     	this.x4 = i;
     }
-	public abstract double getAire();
-	public abstract double getDistanceMax();
 }

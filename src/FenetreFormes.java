@@ -13,8 +13,12 @@ Historique des modifications
 2016-01-28 Version finale
  *******************************************************/  
 
+import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Stroke;
+
 import javax.swing.JComponent;
 
 import jdk.management.resource.internal.inst.SocketOutputStreamRMHooks;
@@ -36,10 +40,9 @@ public class FenetreFormes extends JComponent{
 	public static final int HEIGHT = 500;
 	public static final Dimension dimension = new Dimension(500,500);
 	public CreateurForme createur;
+	private int x,y = 0;
 	private Forme forme = null;
-	private Forme[] formeArray = new Forme[10];
 	private MyList listFormes = new MyList();
-	private int i=0;
 
 
 	/**
@@ -47,7 +50,6 @@ public class FenetreFormes extends JComponent{
 	 */
 	public FenetreFormes(){
 		createur = new CreateurForme();
-		formeArray = new Forme[10];
 	}
 
 
@@ -56,9 +58,10 @@ public class FenetreFormes extends JComponent{
 	 */
 	@Override 
 	public void paintComponent(Graphics g){
-		for(int i=formeArray.length-1;i>=0;i--){
-			if(formeArray[i] instanceof Forme && formeArray[i] != null){
-				switch(formeArray[i].getName()){
+		for(int i=listFormes.getLength()-1;i>=0;i--){
+			if(listFormes.getItem(i) instanceof Forme && listFormes.getItem(i) != null){
+				paintPointille((Graphics2D)g,i);
+				switch(((Forme)listFormes.getItem(i)).getName()){
 				case "RECTANGLE" :
 					paintRectangle(g,i);
 					break;
@@ -77,18 +80,35 @@ public class FenetreFormes extends JComponent{
 				}
 			}
 		}
+		x=0;
+		y=0;
 	}
 
+	public void paintPointille(Graphics2D g, int i){
+		float dash1[] = {10.0f};
+		BasicStroke pointille = new BasicStroke(1.0f,
+                BasicStroke.CAP_BUTT,
+                BasicStroke.JOIN_MITER,
+                10.0f, dash1, 0.0f);
+		g.setStroke(pointille);
+		g.drawRect(x, y,((Forme)listFormes.getItem(i)).getWidth() , ((Forme)listFormes.getItem(i)).getHeight());
+		x+=40;
+		y+=40;
+		
+	}
+	
+	
 	/**
 	 * Paint un rectangle
 	 * @param g = Graphics
 	 * @param i = l'index du tableau
 	 */
 	public void paintRectangle(Graphics g,int i){
-		int width = formeArray[i].getX1()-formeArray[i].getX3();
-		int height = formeArray[i].getX2()-formeArray[i].getX4();
-		g.setColor(formeArray[i].getColor());
-		g.fillRect(formeArray[i].getX1(),formeArray[i].getX2(),width,height);
+		int width = ((Forme)listFormes.getItem(i)).getWidth();
+		int height = ((Forme)listFormes.getItem(i)).getHeight();
+		g.drawRect(x,y,width,height);
+		g.setColor(((Forme)listFormes.getItem(i)).getColor());
+		g.fillRect(x,y,width,height);
 	}
 	
 	/**
@@ -97,10 +117,11 @@ public class FenetreFormes extends JComponent{
 	 * @param i = l'index du tableau
 	 */
 	public void paintOvale(Graphics g, int i){
-		int width = formeArray[i].getX3()*2;
-		int height = formeArray[i].getX4()*2;
-		g.setColor(formeArray[i].getColor());
-		g.fillOval(formeArray[i].getX1(),formeArray[i].getX2(),width,height);
+		int width = ((Forme)listFormes.getItem(i)).getWidth();
+		int height = ((Forme)listFormes.getItem(i)).getHeight();
+		g.drawOval(x,y,width,height);
+		g.setColor(((Forme)listFormes.getItem(i)).getColor());
+		g.fillOval(x,y,width,height);
 	}
 
 	/**
@@ -109,10 +130,11 @@ public class FenetreFormes extends JComponent{
 	 * @param i = l'index du tableau
 	 */
 	public void paintCarre(Graphics g, int i){
-		int width = formeArray[i].getX1()-formeArray[i].getX3();
-		int height = formeArray[i].getX2()-formeArray[i].getX4();
-		g.setColor(formeArray[i].getColor());
-		g.fillRect(formeArray[i].getX1(),formeArray[i].getX2(),width,height);
+		int width = ((Forme)listFormes.getItem(i)).getWidth();
+		int height = ((Forme)listFormes.getItem(i)).getHeight();
+		g.drawRect(x,y,width,height);
+		g.setColor(((Forme)listFormes.getItem(i)).getColor());
+		g.fillRect(x,y,width,height);
 	}
 
 	/**
@@ -121,8 +143,9 @@ public class FenetreFormes extends JComponent{
 	 * @param i = l'index du tableau
 	 */
 	public void paintCercle(Graphics g, int i){
-		g.setColor(formeArray[i].getColor());
-		g.fillOval(formeArray[i].getX1(),formeArray[i].getX2(),formeArray[i].getX3(),formeArray[i].getX3());
+		g.drawOval(((Forme)listFormes.getItem(i)).getX1(),((Forme)listFormes.getItem(i)).getX2(),((Forme)listFormes.getItem(i)).getX3(),((Forme)listFormes.getItem(i)).getX3());
+		g.setColor(((Forme)listFormes.getItem(i)).getColor());
+		g.fillOval(x,y,((Forme)listFormes.getItem(i)).getWidth(),((Forme)listFormes.getItem(i)).getHeight());
 	}
 
 	/**
@@ -131,20 +154,23 @@ public class FenetreFormes extends JComponent{
 	 * @param i = l'index du tableau
 	 */
 	public void paintLigne(Graphics g, int i){
-		g.setColor(formeArray[i].getColor());
-		g.drawLine(formeArray[i].getX1(), formeArray[i].getX2(), formeArray[i].getX3(), formeArray[i].getX4());
+		g.setColor(((Forme)listFormes.getItem(i)).getColor());
+		g.drawLine(x,y, x+((Forme)listFormes.getItem(i)).getWidth(),y+((Forme)listFormes.getItem(i)).getHeight());
 	}
 
 	
 	public void creerFormes(String info){
+		if(listFormes.getLength()!=10){
 		forme = createur.splitInfo(info);		
 		listFormes.addItem(forme);
-		System.out.println(((Forme)listFormes.getItem(i)).getName());
-		i++;
-	//	for(int i=formeArray.length-1;i>0;i--){			
-		//	formeArray[i]=formeArray[i-1];
-	//	}	
-	//	formeArray[0] = forme;	
+		}
+		else{
+			listFormes = new MyList();
+			x=0;
+			y=0;
+			forme = createur.splitInfo(info);		
+			listFormes.addItem(forme);
+		}
 		repaint();
 	}
 

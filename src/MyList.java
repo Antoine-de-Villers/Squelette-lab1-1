@@ -42,7 +42,7 @@ public class MyList {
     	}
        return maillonSearched.getObjet();
     }
-    
+ 
     public boolean isEmpty(){
     	if(first == null) {
     		listEmpty = false;
