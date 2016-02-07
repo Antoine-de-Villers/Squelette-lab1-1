@@ -172,7 +172,7 @@ public class CreateurForme {
 
 		@Override
 		public double getAire() {
-			aire = (Math.abs(x3-x1)/2)*(Math.abs(x4-x2)/2)*Math.PI;
+			aire = x4*x3*Math.PI;
 			return aire;		
 		}
 

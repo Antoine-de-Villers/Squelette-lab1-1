@@ -1,3 +1,4 @@
+import CreateurForme.Rectangle;
 
 public class MyList {
 	protected Maillon first;
@@ -91,14 +92,29 @@ public class MyList {
     	}
     }
     
+    public void triDistanceMax(){
+    	for(int i = listLength-1; i>1;i--){
+    		for(int j=i;j>0;j--){
+    			if(((Forme) getItem(i)).getDistanceMax() < ((Forme) getItem(j)).getDistanceMax()){
+    			   Object temp=getItem(i);
+    			   getMaillon(i).setObject(getItem(j));
+    			   getMaillon(j).setObject(temp);
+    			}
+    		}
+    	}
+    }
+    
+    public void triType(){
+    
+    }
     
     public void triAireCroissant(){
-    	for(int i = 0; i < listLength - 1; i++){
-    		for(int j = i + 1; j < listLength; j++){
-    			if(((Forme) getItem(j)).getAire() < ((Forme) getItem(i)).getAire()){
-    			   Object temp=getItem(j);
-    			   getMaillon(j).setObject(getItem(i));
-    			   getMaillon(i).setObject(temp);
+    	for(int i = listLength-1; i>1;i--){
+    		for(int j=i;j>0;j--){
+    			if(((Forme) getItem(i)).getAire() < ((Forme) getItem(j)).getAire()){
+    			   Object temp=getItem(i);
+    			   getMaillon(i).setObject(getItem(j));
+    			   getMaillon(j).setObject(temp);
     			}
     		}
     	}
@@ -107,5 +123,15 @@ public class MyList {
     		System.out.println(((Forme)getItem(i)).getAire());
     	}
     	
+    }
+    
+    public void Inverse(){
+    	for(int i = 0; i < listLength - 1; i++){
+    		for(int j = listLength -1; j >= 0; j--){
+    			Object temp = getItem(j);
+    			getMaillon(j).setObject(getItem(i));
+    			getMaillon(i).setObject(temp);
+    		}
+    	}
     }
 }
