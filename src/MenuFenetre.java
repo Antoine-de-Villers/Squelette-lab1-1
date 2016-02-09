@@ -52,6 +52,7 @@ public class MenuFenetre extends JMenuBar {
 	private static final String MESSAGE_DIALOGUE_A_PROPOS = "app.frame.dialog.about";
 
 	private  JMenuItem arreterMenuItem, demarrerMenuItem, arreterCommMenuItem, demarrerCommMenuItem;
+	private JRadioButtonMenuItem originel = new JRadioButtonMenuItem("Originel");
     private JRadioButtonMenuItem sequenceCroissante = new JRadioButtonMenuItem("Sequence croissante");
 	private JRadioButtonMenuItem sequenceDecroissante = new JRadioButtonMenuItem("Sequence decroissante");
 	private JRadioButtonMenuItem aireCroissante = new JRadioButtonMenuItem("Aire croissante");
@@ -107,9 +108,19 @@ public class MenuFenetre extends JMenuBar {
 
 	private void addMenuOrdre(){
 	JMenu menu = creerMenu(MENU_ORDRE_TITRE, new String[]{});	
+	originel.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0){
+			comm.tri("originel");
+		}
+	});
 	sequenceCroissante.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent arg0){
 			comm.tri("sequence Croissante");
+		}
+	});
+	sequenceDecroissante.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0){
+			comm.tri("sequence Decroissante");
 		}
 	});
 	aireCroissante.addActionListener(new ActionListener(){
@@ -117,7 +128,29 @@ public class MenuFenetre extends JMenuBar {
 			comm.tri("aire Croissante");
 		}
 	});
+	aireDecroissante.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0){
+			comm.tri("aire Decroissante");
+		}
+	});
+	forme.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0){
+			comm.tri("forme");
+		}
+	});
+	formeInverse.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0){
+			comm.tri("forme Inverse");
+		}
+	});
+	distance.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0){
+			comm.tri("distance");
+		}
+	});
+	
 	ButtonGroup group = new ButtonGroup();
+	group.add(originel);
 	group.add(sequenceCroissante);
 	group.add(sequenceDecroissante);
 	group.add(aireCroissante);
@@ -125,6 +158,7 @@ public class MenuFenetre extends JMenuBar {
 	group.add(forme);
 	group.add(formeInverse);
 	group.add(distance);
+	menu.add(originel);
 	menu.add(sequenceCroissante);
 	menu.add(sequenceDecroissante);
 	menu.add(aireCroissante);

@@ -1,5 +1,3 @@
-import CreateurForme.Rectangle;
-
 public class MyList {
 	protected Maillon first;
 	protected Maillon last;
@@ -125,7 +123,7 @@ public class MyList {
     	
     }
     
-    public void Inverse(){
+    public void triInverse(){
     	for(int i = 0; i < listLength - 1; i++){
     		for(int j = listLength -1; j >= 0; j--){
     			Object temp = getItem(j);

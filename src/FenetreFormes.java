@@ -42,6 +42,7 @@ public class FenetreFormes extends JComponent{
 	public static final Dimension dimension = new Dimension(500,500);
 	public CreateurForme createur;
 	private int x,y = 0;
+	private boolean origine;
 	private Forme forme = null;
 	private MyList listFormes = new MyList();
 
@@ -95,9 +96,14 @@ public class FenetreFormes extends JComponent{
 		g.setStroke(pointille);
 		g.setColor(Color.BLACK);
 		g.drawRect(x, y,((Forme)listFormes.getItem(i)).getWidth()+2 , ((Forme)listFormes.getItem(i)).getHeight()+2);
-		x+=40;
-		y+=40;
-		
+		if (origine){
+			x=((Forme)listFormes.getItem(i)).getX1();
+			y=((Forme)listFormes.getItem(i)).getX2();
+		}
+		else {
+			x+=40;
+			y+=40;
+		}	
 	}
 	
 	
@@ -184,12 +190,46 @@ public class FenetreFormes extends JComponent{
 	
 	public void tri(String type){
 		switch(type){
+		case "originel":
+	//		listFormes.triOrigine();
+			origine = true;
+			break;
 		case "sequence Croissante":
+			origine = false;
 			listFormes.triCroissant();
 			break;
+		case "sequence Decroissante":
+			origine = false;
+			listFormes.triCroissant();
+			listFormes.triInverse();
+			break;
 		case "aire Croissante":
+			origine = false;
 			listFormes.triAireCroissant();
 			break;
+		case "aire Decroissante":
+			origine = false;
+			listFormes.triAireCroissant();
+			listFormes.triInverse();
+			break;
+		case "forme":
+			origine = false;
+			listFormes.triType();
+			break;
+		case "forme Inverse":
+			origine = false;
+			listFormes.triType();
+			listFormes.triInverse();
+			break;
+		case "distance":
+			origine = false;
+			listFormes.triDistanceMax();
+			break;
+		default:
+			origine = false;
+			listFormes.triCroissant();
+			break;
+			
 		}
 	   repaint();
 	}
