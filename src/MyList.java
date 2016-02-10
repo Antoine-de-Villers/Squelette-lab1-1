@@ -104,7 +104,18 @@ public class MyList {
     }
     
     public void triType(){
-    
+    	for(int i = listLength-1; i>1;i--){
+    		for(int j=i;j>=0;j--){
+    			if(((Forme) getItem(i)).getType() > ((Forme) getItem(j)).getType()){
+    			   Object temp=getItem(i);
+    			   getMaillon(i).setObject(getItem(j));
+    			   getMaillon(j).setObject(temp);
+    			}
+    		}   		
+    	}
+    	for(int i = 0; i < listLength; i++){
+    		System.out.println(((Forme)getItem(i)).getType());
+    	}
     }
     
     public void triAireCroissant(){

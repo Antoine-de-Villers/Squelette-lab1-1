@@ -76,23 +76,27 @@ public class CreateurForme {
 		
 		if(name.equals("RECTANGLE")){
 			forme = new Rectangle(nseq,name,x1,x2,x3,x4);
-			
+			forme.setType(2);
 		}
 		
 		if(name.equals("OVALE")){
 			forme = new Ovale(nseq,name,x1,x2,x3,x4);
+			forme.setType(4);
 		}
 		
 		if(name.equals("CARRE")){
 			forme = new Carre(nseq,name,x1,x2,x3,x4);
+			forme.setType(1);
 		}
 		
 		if(name.equals("CERCLE")){
 			forme = new Cercle(nseq,name,x1,x2,x3);
+			forme.setType(3);
 		}
 		
 		if(name.equals("LIGNE")){
 			forme = new Ligne(nseq,name,x1,x2,x3,x4);
+			forme.setType(5);
 		}
 		return forme;
 	}
@@ -118,7 +122,7 @@ public class CreateurForme {
 		 */
 		public Rectangle(int nseq,String name, int x1, int x2, int x3, int x4){
 			super(nseq,name,x1,x2,x3,x4);
-			color=new Color(112,222,232,128);
+			color=new Color(112,222,232);
 		}
 
 		@Override
@@ -167,7 +171,7 @@ public class CreateurForme {
 		 */
 		public Ovale(int nseq,String name, int x1, int x2, int x3, int x4){
 			super(nseq,name,x1,x2,x3,x4);
-			color=new Color(222,34,32,128);
+			color=new Color(222,34,32);
 		}
 
 		@Override
@@ -216,7 +220,7 @@ public class CreateurForme {
 		 */
 		public Carre(int nseq,String name, int x1, int x2, int x3, int x4){
 			super(nseq,name,x1,x2,x3,x4);
-			color=new Color(255,0,255,128);
+			color=new Color(255,0,255);
 		}
 
 		@Override
@@ -263,7 +267,7 @@ public class CreateurForme {
 		 */
 		public Cercle(int nseq,String name, int x1, int x2, int x3){
 			super(nseq,name,x1,x2,x3);
-			color=new Color(12,7,255,128);
+			color=new Color(12,7,255);
 		}
 
 		@Override
@@ -309,7 +313,7 @@ public class CreateurForme {
 		 */
 		public Ligne(int nseq,String name, int x1, int x2, int x3, int x4){
 			super(nseq,name,x1,x2,x3,x4);
-			color=new Color(9,234,33,128);
+			color=new Color(9,234,33);
 		}
 
 		@Override

@@ -28,6 +28,7 @@ public abstract class Forme{
 	protected double distanceMax;
 	protected int height;
 	protected int width;
+	protected int type;
 
 
 
@@ -105,6 +106,9 @@ public abstract class Forme{
 	public int getX4(){
 		return this.x4;
 	}
+	public int getType(){
+		return this.type;
+	}
 	
 	public void setX1(int i){
 		this.x1 = i;
@@ -117,5 +121,8 @@ public abstract class Forme{
     }
     public void setX4(int i){
     	this.x4 = i;
+    }
+    public void setType(int t){
+    	this.type = t;
     }
 }
