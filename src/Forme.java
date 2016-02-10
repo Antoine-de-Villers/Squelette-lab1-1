@@ -38,9 +38,21 @@ public abstract class Forme{
 	public Forme() {	
 	}
 	
+	/**
+	 * @return l'aire de la forme
+	 */
 	public abstract double getAire();
+	/**
+	 * @return la distance maximal entre deux point de la forme
+	 */
 	public abstract double getDistanceMax();
+	/**
+	 * @return la hauteur
+	 */
 	public abstract int getHeight();
+	/**
+	 * @return la largeur
+	 */
 	public abstract int getWidth();
 	
 	/**
@@ -110,18 +122,33 @@ public abstract class Forme{
 		return this.type;
 	}
 	
+	/**
+	 * @param i
+	 */
 	public void setX1(int i){
 		this.x1 = i;
 	}
+    /**
+     * @param i
+     */
     public void setX2(int i){
     	this.x2 = i;
 	}
+    /**
+     * @param i
+     */
     public void setX3(int i){
     	this.x3 = i;
     }
+    /**
+     * @param i
+     */
     public void setX4(int i){
     	this.x4 = i;
     }
+    /**
+     * @param t
+     */
     public void setType(int t){
     	this.type = t;
     }
