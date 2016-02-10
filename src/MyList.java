@@ -76,7 +76,7 @@ public class MyList {
     
     public void triCroissant(){
     	for(int i = listLength-1; i>1;i--){
-    		for(int j=i;j>0;j--){
+    		for(int j=i;j>=0;j--){
     			if(((Forme) getItem(i)).getID() < ((Forme)getItem(j)).getID()){
         			Object temp = getItem(i);
         			(getMaillon(i)).setObject(getItem(j));
@@ -87,12 +87,13 @@ public class MyList {
     	}
     	for(int i = 0; i < listLength; i++){
     		System.out.println(((Forme)getItem(i)).getID());
+    		System.out.println(((Forme)getItem(i)).getName());
     	}
     }
     
     public void triDistanceMax(){
     	for(int i = listLength-1; i>1;i--){
-    		for(int j=i;j>0;j--){
+    		for(int j=i;j>=0;j--){
     			if(((Forme) getItem(i)).getDistanceMax() < ((Forme) getItem(j)).getDistanceMax()){
     			   Object temp=getItem(i);
     			   getMaillon(i).setObject(getItem(j));
@@ -108,7 +109,7 @@ public class MyList {
     
     public void triAireCroissant(){
     	for(int i = listLength-1; i>1;i--){
-    		for(int j=i;j>0;j--){
+    		for(int j=i;j>=0;j--){
     			if(((Forme) getItem(i)).getAire() < ((Forme) getItem(j)).getAire()){
     			   Object temp=getItem(i);
     			   getMaillon(i).setObject(getItem(j));

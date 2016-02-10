@@ -62,6 +62,10 @@ public class FenetreFormes extends JComponent{
 	public void paintComponent(Graphics g){
 		for(int i=listFormes.getLength()-1;i>=0;i--){
 			if(listFormes.getItem(i) instanceof Forme && listFormes.getItem(i) != null){
+				if (origine){
+					x=((Forme)listFormes.getItem(i)).getX1();
+					y=((Forme)listFormes.getItem(i)).getX2();
+				}
 				switch(((Forme)listFormes.getItem(i)).getName()){
 				case "RECTANGLE" :
 					paintRectangle(g,i);
@@ -82,8 +86,8 @@ public class FenetreFormes extends JComponent{
 				paintPointille((Graphics2D)g,i);
 			}
 		}
-		x=0;
-		y=0;
+		x=1;
+		y=1;
 	}
 
 	public void paintPointille(Graphics2D g1, int i){
@@ -95,15 +99,11 @@ public class FenetreFormes extends JComponent{
                 10.0f, dash1, 0.0f);
 		g.setStroke(pointille);
 		g.setColor(Color.BLACK);
-		g.drawRect(x, y,((Forme)listFormes.getItem(i)).getWidth()+2 , ((Forme)listFormes.getItem(i)).getHeight()+2);
-		if (origine){
-			x=((Forme)listFormes.getItem(i)).getX1();
-			y=((Forme)listFormes.getItem(i)).getX2();
+		g.drawRect(x-1, y-1,((Forme)listFormes.getItem(i)).getWidth()+2 , ((Forme)listFormes.getItem(i)).getHeight()+2);
+		if(!origine){
+				x+=40;
+				y+=40;
 		}
-		else {
-			x+=40;
-			y+=40;
-		}	
 	}
 	
 	
@@ -116,9 +116,9 @@ public class FenetreFormes extends JComponent{
 		int width = ((Forme)listFormes.getItem(i)).getWidth();
 		int height = ((Forme)listFormes.getItem(i)).getHeight();
 		g.setColor(Color.BLACK);
-		g.drawRect(x+1,y+1,width,height);
+		g.drawRect(x,y,width,height);
 		g.setColor(((Forme)listFormes.getItem(i)).getColor());
-		g.fillRect(x+1,y+1,width,height);
+		g.fillRect(x,y,width,height);
 		
 	}
 	
@@ -131,9 +131,9 @@ public class FenetreFormes extends JComponent{
 		int width = ((Forme)listFormes.getItem(i)).getWidth();
 		int height = ((Forme)listFormes.getItem(i)).getHeight();
 		g.setColor(Color.BLACK);
-		g.drawOval(x+1,y+1,width,height);
+		g.drawOval(x,y,width,height);
 		g.setColor(((Forme)listFormes.getItem(i)).getColor());
-		g.fillOval(x+1,y+1,width,height);
+		g.fillOval(x,y,width,height);
 	}
 
 	/**
@@ -145,9 +145,9 @@ public class FenetreFormes extends JComponent{
 		int width = ((Forme)listFormes.getItem(i)).getWidth();
 		int height = ((Forme)listFormes.getItem(i)).getHeight();
 		g.setColor(Color.BLACK);
-		g.drawRect(x+1,y+1,width,height);
+		g.drawRect(x,y,width,height);
 		g.setColor(((Forme)listFormes.getItem(i)).getColor());
-		g.fillRect(x+1,y+1,width,height);
+		g.fillRect(x,y,width,height);
 	}
 
 	/**
@@ -157,9 +157,9 @@ public class FenetreFormes extends JComponent{
 	 */
 	public void paintCercle(Graphics g, int i){
 		g.setColor(Color.BLACK);
-		g.drawOval(x+1,y+1,((Forme)listFormes.getItem(i)).getWidth(),((Forme)listFormes.getItem(i)).getHeight());
+		g.drawOval(x,y,((Forme)listFormes.getItem(i)).getWidth(),((Forme)listFormes.getItem(i)).getHeight());
 		g.setColor(((Forme)listFormes.getItem(i)).getColor());
-		g.fillOval(x+1,y+1,((Forme)listFormes.getItem(i)).getWidth(),((Forme)listFormes.getItem(i)).getHeight());
+		g.fillOval(x,y,((Forme)listFormes.getItem(i)).getWidth(),((Forme)listFormes.getItem(i)).getHeight());
 	}
 
 	/**
@@ -169,7 +169,7 @@ public class FenetreFormes extends JComponent{
 	 */
 	public void paintLigne(Graphics g, int i){
 		g.setColor(((Forme)listFormes.getItem(i)).getColor());
-		g.drawLine(x+1,y+1, x+((Forme)listFormes.getItem(i)).getWidth(),y+((Forme)listFormes.getItem(i)).getHeight());
+		g.drawLine(x,y, x+((Forme)listFormes.getItem(i)).getWidth(),y+((Forme)listFormes.getItem(i)).getHeight());
 	}
 
 	
@@ -191,7 +191,6 @@ public class FenetreFormes extends JComponent{
 	public void tri(String type){
 		switch(type){
 		case "originel":
-	//		listFormes.triOrigine();
 			origine = true;
 			break;
 		case "sequence Croissante":

@@ -161,6 +161,7 @@ public class CommBase {
 					//System.out.println(info);
 					if(listener!=null)
 						if(nbForme!=10){
+					    System.out.println(info);
 						firePropertyChange("ENVOIE", null, (Object) info);
 						nbForme++;
 						}
