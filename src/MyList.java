@@ -75,7 +75,7 @@ public class MyList {
     }
     
     public void triCroissant(){
-    	for(int i = listLength-1; i>1;i--){
+    	for(int i = listLength-1; i>0;i--){
     		for(int j=i;j>=0;j--){
     			if(((Forme) getItem(i)).getID() > ((Forme)getItem(j)).getID()){
         			Object temp = getItem(i);
@@ -92,7 +92,7 @@ public class MyList {
     }
     
     public void triDistanceMax(){
-    	for(int i = listLength-1; i>1;i--){
+    	for(int i = listLength-1; i>0;i--){
     		for(int j=i;j>=0;j--){
     			if(((Forme) getItem(i)).getDistanceMax() > ((Forme) getItem(j)).getDistanceMax()){
     			   Object temp=getItem(i);
@@ -104,7 +104,7 @@ public class MyList {
     }
     
     public void triType(){
-    	for(int i = listLength-1; i>1;i--){
+    	for(int i = listLength-1; i>0;i--){
     		for(int j=i;j>=0;j--){
     			if(((Forme) getItem(i)).getType() > ((Forme) getItem(j)).getType()){
     			   Object temp=getItem(i);
@@ -119,7 +119,7 @@ public class MyList {
     }
     
     public void triAireCroissant(){
-    	for(int i = listLength-1; i>1;i--){
+    	for(int i = listLength-1; i>0;i--){
     		for(int j=i;j>=0;j--){
     			if(((Forme) getItem(i)).getAire() > ((Forme) getItem(j)).getAire()){
     			   Object temp=getItem(i);
