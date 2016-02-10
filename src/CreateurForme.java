@@ -127,13 +127,13 @@ public class CreateurForme {
 
 		@Override
 		public double getAire() {		
-			aire = Math.abs(x3-x1)*Math.abs(x4-x2);
+			aire = height*width;
 			return aire;
 		}
 
 		@Override
 		public double getDistanceMax() {
-			distanceMax = Math.sqrt((Math.abs(x3-x1)^2)+(Math.abs(x4-x2)^2));
+			distanceMax = Math.sqrt(((Math.pow(height,2)) + (Math.pow(width,2))));
 			return distanceMax;
 		}
 
@@ -225,13 +225,13 @@ public class CreateurForme {
 
 		@Override
 		public double getAire() {			
-			aire = Math.abs(x3-x1)*Math.abs(x4-x2);
+			aire = height*width;
 			return aire;
 		}
 
 		@Override
 		public double getDistanceMax() {
-			distanceMax = Math.sqrt(((x3-x1)^2)+((x4-x2)^2));
+			distanceMax = Math.sqrt(((Math.pow(height,2)) + (Math.pow(width,2))));
 			return distanceMax;
 		}
 
@@ -272,7 +272,7 @@ public class CreateurForme {
 
 		@Override
 		public double getAire() {
-			aire = Math.abs(x3^2)*Math.PI;
+			aire = Math.abs(x3*x3)*Math.PI;
 			return aire;
 		}
 
@@ -317,14 +317,14 @@ public class CreateurForme {
 		}
 
 		@Override
-		public double getAire() {
-			aire = Math.sqrt((Math.abs(x3-x1)^2)+(Math.abs(x4-x2)^2));
+		public double getAire() {		
+			aire = Math.sqrt(((Math.pow(height,2)) + (Math.pow(width,2))));
 			return aire;
 		}
 
 		@Override
 		public double getDistanceMax() {
-			distanceMax = Math.sqrt((Math.abs(x3-x1)^2)+(Math.abs(x4-x2)^2));
+			distanceMax = Math.sqrt(((Math.pow(height,2)) + (Math.pow(width,2))));
 			return distanceMax;
 		}
 
