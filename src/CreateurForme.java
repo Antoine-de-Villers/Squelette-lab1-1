@@ -178,10 +178,10 @@ public class CreateurForme {
 
 		@Override
 		public double getDistanceMax() {
-			if((x3-x1) > (x4-x2)){
-				distanceMax = x3-x1;
+			if((x3) > (x4)){
+				distanceMax = x3;
 			}
-			else distanceMax = x4-x2;
+			else distanceMax = x4;
 			return distanceMax;
 		}
 
@@ -320,7 +320,7 @@ public class CreateurForme {
 
 		@Override
 		public double getDistanceMax() {
-			distanceMax = Math.sqrt(((x3-x1)^2)+((x4-x2)^2));
+			distanceMax = Math.sqrt((Math.abs(x3-x1)^2)+(Math.abs(x4-x2)^2));
 			return distanceMax;
 		}
 

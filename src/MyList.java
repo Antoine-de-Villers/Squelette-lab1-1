@@ -77,7 +77,7 @@ public class MyList {
     public void triCroissant(){
     	for(int i = listLength-1; i>1;i--){
     		for(int j=i;j>=0;j--){
-    			if(((Forme) getItem(i)).getID() < ((Forme)getItem(j)).getID()){
+    			if(((Forme) getItem(i)).getID() > ((Forme)getItem(j)).getID()){
         			Object temp = getItem(i);
         			(getMaillon(i)).setObject(getItem(j));
         			(getMaillon(j)).setObject(temp);
@@ -94,7 +94,7 @@ public class MyList {
     public void triDistanceMax(){
     	for(int i = listLength-1; i>1;i--){
     		for(int j=i;j>=0;j--){
-    			if(((Forme) getItem(i)).getDistanceMax() < ((Forme) getItem(j)).getDistanceMax()){
+    			if(((Forme) getItem(i)).getDistanceMax() > ((Forme) getItem(j)).getDistanceMax()){
     			   Object temp=getItem(i);
     			   getMaillon(i).setObject(getItem(j));
     			   getMaillon(j).setObject(temp);
@@ -110,7 +110,7 @@ public class MyList {
     public void triAireCroissant(){
     	for(int i = listLength-1; i>1;i--){
     		for(int j=i;j>=0;j--){
-    			if(((Forme) getItem(i)).getAire() < ((Forme) getItem(j)).getAire()){
+    			if(((Forme) getItem(i)).getAire() > ((Forme) getItem(j)).getAire()){
     			   Object temp=getItem(i);
     			   getMaillon(i).setObject(getItem(j));
     			   getMaillon(j).setObject(temp);
@@ -125,12 +125,21 @@ public class MyList {
     }
     
     public void triInverse(){
-    	for(int i = 0; i < listLength - 1; i++){
+    	/*for(int i = 0; i < listLength - 1; i++){
     		for(int j = listLength -1; j >= 0; j--){
     			Object temp = getItem(j);
     			getMaillon(j).setObject(getItem(i));
     			getMaillon(i).setObject(temp);
     		}
+    	}*/
+    	int i = 0;
+    	int j = listLength;
+    	while (i!=j){
+    		Object temp = getItem(j-1);
+			getMaillon(j-1).setObject(getItem(i));
+			getMaillon(i).setObject(temp);
+			i++;
+			j--;
     	}
     }
 }
