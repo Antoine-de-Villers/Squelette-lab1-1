@@ -76,23 +76,27 @@ public class CreateurForme {
 		
 		if(name.equals("RECTANGLE")){
 			forme = new Rectangle(nseq,name,x1,x2,x3,x4);
-			
+			forme.setType(2);
 		}
 		
 		if(name.equals("OVALE")){
 			forme = new Ovale(nseq,name,x1,x2,x3,x4);
+			forme.setType(4);
 		}
 		
 		if(name.equals("CARRE")){
 			forme = new Carre(nseq,name,x1,x2,x3,x4);
+			forme.setType(1);
 		}
 		
 		if(name.equals("CERCLE")){
 			forme = new Cercle(nseq,name,x1,x2,x3);
+			forme.setType(3);
 		}
 		
 		if(name.equals("LIGNE")){
 			forme = new Ligne(nseq,name,x1,x2,x3,x4);
+			forme.setType(5);
 		}
 		return forme;
 	}
