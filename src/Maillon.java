@@ -4,8 +4,8 @@
  * @author Antoine de Villers
  */
 public class Maillon {
-	public Object object;
-    public Maillon next;	
+	private Object object;
+	private Maillon next;	
 	
 /**
  * Constructeur
@@ -29,5 +29,13 @@ public Object getObjet(){
  */
 public void setObject(Object o){
     this.object = o;
+}
+
+public void setNext(Maillon next){
+	this.next = next;
+}
+
+public Maillon getNext(){
+	return next;
 }
 }

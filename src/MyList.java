@@ -23,7 +23,7 @@ public class MyList {
     		first = m;
     	}
     	else if(first != null){
-    		last.next = m;
+    		last.setNext(m);
     	}
     	last = m;   	
     }
@@ -42,12 +42,12 @@ public class MyList {
     		if(count == ind){
         		done=true;
         	}
-    		else if(maillonSearched.next == null){
+    		else if(maillonSearched.getNext() == null){
     			done = true;
     			maillonSearched = null;
     		}
         	else{
-        		maillonSearched = maillonSearched.next;
+        		maillonSearched = maillonSearched.getNext();
         		count++;
         	}
     	}
@@ -68,12 +68,12 @@ public class MyList {
     		if(count == ind){
         		done=true;
         	}
-    		else if(maillonSearched.next == null){
+    		else if(maillonSearched.getNext() == null){
     			done = true;
     			maillonSearched = null;
     		}
         	else{
-        		maillonSearched = maillonSearched.next;
+        		maillonSearched = maillonSearched.getNext();
         		count++;
         	}
     	}
