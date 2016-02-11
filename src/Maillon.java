@@ -5,7 +5,7 @@
  */
 public class Maillon {
 	public Object object;
-   public Maillon next;	
+    public Maillon next;	
 	
 /**
  * Constructeur

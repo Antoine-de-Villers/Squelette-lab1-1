@@ -1,8 +1,8 @@
 public class MyList {
-	protected Maillon first;
-	protected Maillon last;
-	protected int listLength;
-	protected boolean listEmpty = true;
+	private Maillon first;
+	private Maillon last;
+	private int listLength;
+	private boolean listEmpty = true;
 	
     /**
      * Constructeur
