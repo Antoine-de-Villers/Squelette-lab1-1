@@ -90,6 +90,11 @@ public class FenetreFormes extends JComponent{
 		y=1;
 	}
 
+	/**
+	 * Dessine le carré de pointillé qui se trouve a l'entour des formes
+	 * @param g1
+	 * @param i
+	 */
 	public void paintPointille(Graphics2D g1, int i){
 		Graphics2D g = (Graphics2D) g1.create();
 		float dash1[] = {10.0f};
@@ -188,6 +193,10 @@ public class FenetreFormes extends JComponent{
 		repaint();
 	}
 	
+	/**
+	 * Méthode qui appelle la bonne methode de tri
+	 * @param type
+	 */
 	public void tri(String type){
 		switch(type){
 		case "originel":

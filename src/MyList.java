@@ -113,10 +113,6 @@ public class MyList {
     		}
     		
     	}
-    	for(int i = 0; i < listLength; i++){
-    		System.out.println(((Forme)getItem(i)).getID());
-    		System.out.println(((Forme)getItem(i)).getName());
-    	}
     }
     
     /**
@@ -147,9 +143,6 @@ public class MyList {
     			}
     		}   		
     	}
-    	for(int i = 0; i < listLength; i++){
-    		System.out.println(((Forme)getItem(i)).getType());
-    	}
     }
     
     /**
@@ -164,12 +157,7 @@ public class MyList {
     			   getMaillon(j).setObject(temp);
     			}
     		}
-    	}
-    	
-    	for(int i = 0; i < listLength; i++){
-    		System.out.println(((Forme)getItem(i)).getAire());
-    	}
-    	
+    	}   	
     }
     
     /**
